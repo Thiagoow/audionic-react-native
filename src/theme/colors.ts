@@ -4,6 +4,7 @@ export const colors = {
   starsColor: '#FFC420',
   containerColor: '#ECECFF',
   greyColor: '#CBCBCB',
+  whiteColor: '#FFFFFF',
   redCardBg: '#FF031210',
   blueCardBg: '#0803FF10',
   purpleCardBg: '#9E00FF10',
