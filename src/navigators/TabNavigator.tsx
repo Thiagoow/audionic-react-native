@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '../theme/colors'
 import HomeScreen from '../screens/HomeScreen'
 import FavoriteScreen from '../screens/FavoriteScreen'
@@ -25,7 +25,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
-              name="home"
+              name="house"
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
@@ -54,7 +54,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
-              name="shopping-bag"
+              name="bag-shopping"
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />

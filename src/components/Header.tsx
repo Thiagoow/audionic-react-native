@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '../theme/colors'
 import BrandLogo from '../assets/brand/audionicLogo.svg'
 
@@ -24,7 +24,7 @@ const Header = ({ home }: HeaderProps) => {
         <BrandLogo fill={colors.primaryColor} width={98} height={28} />
 
         <Icon
-          name={home ? 'search' : 'shopping-bag'}
+          name={home ? 'magnifying-glass' : 'bag-shopping'}
           size={25}
           color={colors.blackColor}
         />
