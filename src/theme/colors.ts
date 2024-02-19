@@ -5,6 +5,7 @@ export const colors = {
   containerColor: '#ECECFF',
   greyColor: '#CBCBCB',
   whiteColor: '#FFFFFF',
+  blackColor: '#000000',
   redCardBg: '#FF031210',
   blueCardBg: '#0803FF10',
   purpleCardBg: '#9E00FF10',

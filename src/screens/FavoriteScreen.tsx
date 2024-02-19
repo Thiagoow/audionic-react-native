@@ -17,9 +17,7 @@ export default function FavoriteScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.whiteColor,
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: colors.whiteColor
   },
   backgroundRadius: {
     flex: 1,
