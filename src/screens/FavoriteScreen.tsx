@@ -1,12 +1,15 @@
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '../theme/colors'
+import Header from '../components/Header'
 
 export default function FavoriteScreen() {
   return (
     <View style={styles.container}>
-      <Text>Favorites</Text>
-      <StatusBar style="auto" />
+      <Header />
+
+      <View style={styles.backgroundRadius}>
+        <Text>Favorites</Text>
+      </View>
     </View>
   )
 }
@@ -14,8 +17,17 @@ export default function FavoriteScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.containerColor,
+    backgroundColor: colors.whiteColor,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  backgroundRadius: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.containerColor,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20
   }
 })

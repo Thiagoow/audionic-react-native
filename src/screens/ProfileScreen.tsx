@@ -1,12 +1,15 @@
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '../theme/colors'
+import Header from '../components/Header'
 
 export default function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
-      <StatusBar style="auto" />
+      <Header />
+
+      <View style={styles.backgroundRadius}>
+        <Text>Profile</Text>
+      </View>
     </View>
   )
 }
@@ -14,8 +17,17 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.containerColor,
+    backgroundColor: colors.whiteColor,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  backgroundRadius: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.containerColor,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20
   }
 })
