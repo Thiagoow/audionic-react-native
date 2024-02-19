@@ -4,6 +4,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from '../theme/colors'
 import HomeScreen from '../screens/HomeScreen'
 import DetailScreen from '../screens/DetailScreen'
+import FavoriteScreen from '../screens/FavoriteScreen'
+import CartScreen from '../screens/CartScreen'
+import ProfileScreen from '../screens/ProfileScreen'
 
 const Tab = createBottomTabNavigator()
 
@@ -33,7 +36,7 @@ const TabNavigator = () => {
 
       <Tab.Screen
         name="Favorite"
-        component={DetailScreen}
+        component={FavoriteScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
@@ -48,7 +51,7 @@ const TabNavigator = () => {
 
       <Tab.Screen
         name="Cart"
-        component={DetailScreen}
+        component={CartScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
@@ -61,8 +64,8 @@ const TabNavigator = () => {
       ></Tab.Screen>
 
       <Tab.Screen
-        name="History"
-        component={DetailScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon

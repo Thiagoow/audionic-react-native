@@ -11,7 +11,7 @@ export default function App() {
         <Stack.Screen
           name="Tab"
           component={TabNavigator}
-          options={{ animation: 'slide_from_bottom' }}
+          options={{ animation: 'default' }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '../theme/colors'
 
-const HomeScreen = () => {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text>Home</Text>
@@ -10,8 +10,6 @@ const HomeScreen = () => {
     </View>
   )
 }
-
-export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
