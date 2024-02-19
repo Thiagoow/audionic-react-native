@@ -1,4 +1,22 @@
-const headphonesData = [
+interface Product {
+  index: number
+  id: string
+  name: string
+  description: string
+  image_link: any
+  colors: HeadphoneColor[]
+  average_rating: number
+  favorite: boolean
+  type: 'Beats' | 'JBL'
+}
+
+interface HeadphoneColor {
+  color: string
+  price: number
+  available: boolean
+}
+
+const headphonesData: Product[] = [
   {
     index: 0,
     id: 'beats-pro',
@@ -8,7 +26,7 @@ const headphonesData = [
     Form Factor: On-Ear
     Connections: Bluetooth, Wireless
     Speaker Configurations: Stereo`,
-    image_link: require('../assets/coffee_assets/americano/square/americano_pic_1_square.png'),
+    image_link: require('../assets/headphones/beats-pro.png'),
     colors: [
       { color: 'red', price: 249.9, available: true },
       { color: 'black', price: 249.9, available: true },
@@ -27,7 +45,7 @@ const headphonesData = [
     Form Factor: On-Ear
     Connections: Bluetooth, Wireless
     Speaker Configurations: Stereo`,
-    image_link: require('../assets/coffee_assets/americano/square/americano_pic_1_square.png'),
+    image_link: require('../assets/headphones/beats-solo.png'),
     colors: [
       { color: 'blue', price: 225, available: true },
       { color: 'green', price: 225, available: false },
@@ -39,14 +57,14 @@ const headphonesData = [
   },
   {
     index: 2,
-    id: 'beats-solo-2',
-    name: 'Beats Solo 2 Headphone',
+    id: 'beats-sport-2',
+    name: 'Beats Sport 2 Headphone',
     description: `Input Type: 3.5mm stereo jack
     Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
     Form Factor: On-Ear
     Connections: Bluetooth, Wireless
     Speaker Configurations: Stereo`,
-    image_link: require('../assets/coffee_assets/americano/square/americano_pic_1_square.png'),
+    image_link: require('../assets/headphones/beats-sport-2.png'),
     colors: [
       { color: 'purple', price: 160, available: true },
       { color: 'red', price: 160, available: false },
@@ -65,7 +83,7 @@ const headphonesData = [
     Form Factor: On-Ear
     Connections: Bluetooth, Wireless
     Speaker Configurations: Stereo`,
-    image_link: require('../assets/coffee_assets/americano/square/americano_pic_1_square.png'),
+    image_link: require('../assets/headphones/beats-basic.png'),
     colors: [
       { color: 'pink', price: 129.9, available: true },
       { color: 'black', price: 129.9, available: false },
@@ -74,6 +92,39 @@ const headphonesData = [
     average_rating: 2,
     favorite: false,
     type: 'Beats'
+  },
+  {
+    index: 3,
+    id: 'jbl-tune-510',
+    name: 'JBL Tune 510 Headphone',
+    description: `Input Type: 3.5mm stereo jack
+    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
+    Form Factor: On-Ear
+    Connections: Bluetooth, Wireless
+    Speaker Configurations: Stereo`,
+    image_link: require('../assets/headphones/jbl-tune-510.png'),
+    colors: [
+      { color: 'grey', price: 129.9, available: true },
+      { color: 'black', price: 129.9, available: false }
+    ],
+    average_rating: 5,
+    favorite: false,
+    type: 'JBL'
+  },
+  {
+    index: 3,
+    id: 'jbl-endurance-sprint',
+    name: 'JBL Endurance Sprint',
+    description: `Bluetooth In Ear Headphones
+    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
+    Form Factor: On-Ear
+    Connections: Bluetooth, Wireless
+    Speaker Configurations: Stereo`,
+    image_link: require('../assets/headphones/jbl-endurance-sprint.png'),
+    colors: [{ color: 'unique', price: 300, available: true }],
+    average_rating: 2,
+    favorite: false,
+    type: 'JBL'
   }
 ]
 
