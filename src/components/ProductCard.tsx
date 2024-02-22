@@ -19,8 +19,26 @@ interface ProductCard
   averageRating: Product['average_rating']
 }
 
-const ProductCard = ({ name, productColors, imgUrl, id }: ProductCard) => {
+const ProductCard = ({
+  id,
+  name,
+  imgUrl,
+  averageRating,
+  productColors
+}: ProductCard) => {
   const [liked, setLiked] = useState(false)
+
+  function returnStars(averageRating: Product['average_rating']) {
+    return Array.from({ length: 5 }, (item, index) => (
+      <Icon
+        key={index}
+        solid={index < Math.round(averageRating)}
+        name="star"
+        size={8}
+        style={{ color: colors.starsColor }}
+      />
+    ))
+  }
 
   return useMemo(
     () => (
@@ -52,13 +70,9 @@ const ProductCard = ({ name, productColors, imgUrl, id }: ProductCard) => {
         <View style={styles.productInfo}>
           <View style={styles.productDetails}>
             <Text style={styles.productName}>{name}</Text>
+
             <View style={styles.starsContainer}>
-              <Icon
-                solid
-                name="star"
-                size={8}
-                style={{ color: colors.starsColor }}
-              />
+              {returnStars(averageRating)}
             </View>
 
             <Text style={styles.productPrice}>
@@ -84,7 +98,7 @@ const ProductCard = ({ name, productColors, imgUrl, id }: ProductCard) => {
         </View>
       </View>
     ),
-    [name, liked]
+    [liked, id, name, imgUrl, averageRating, productColors]
   )
 }
 
