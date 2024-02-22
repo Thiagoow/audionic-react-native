@@ -1,20 +1,4 @@
-interface Product {
-  index: number
-  id: string
-  name: string
-  description: string
-  image_link: any
-  colors: SpeakerColor[]
-  average_rating: number
-  favorite: boolean
-  type: 'Beats' | 'JBL'
-}
-
-interface SpeakerColor {
-  color: string
-  price: number
-  available: boolean
-}
+import { Product } from './types'
 
 const speakersData: Product[] = [
   {

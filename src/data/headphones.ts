@@ -1,26 +1,10 @@
-interface Product {
-  index: number
-  id: string
-  name: string
-  description: string
-  image_link: any
-  colors: HeadphoneColor[]
-  average_rating: number
-  favorite: boolean
-  type: 'Beats' | 'JBL'
-}
-
-interface HeadphoneColor {
-  color: string
-  price: number
-  available: boolean
-}
+import { Product } from './types'
 
 const headphonesData: Product[] = [
   {
     index: 0,
     id: 'beats-pro',
-    name: 'Beats Pro Headset',
+    name: 'Beats Pro',
     description: `Input Type: 3.5mm stereo jack
     Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
     Form Factor: On-Ear
@@ -39,7 +23,7 @@ const headphonesData: Product[] = [
   {
     index: 1,
     id: 'beats-solo',
-    name: 'Beats Solo Headphone',
+    name: 'Beats Solo',
     description: `Input Type: 3.5mm stereo jack
     Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
     Form Factor: On-Ear
@@ -58,7 +42,7 @@ const headphonesData: Product[] = [
   {
     index: 2,
     id: 'beats-sport-2',
-    name: 'Beats Sport 2 Headphone',
+    name: 'Beats Sport 2',
     description: `Input Type: 3.5mm stereo jack
     Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
     Form Factor: On-Ear
@@ -77,7 +61,7 @@ const headphonesData: Product[] = [
   {
     index: 3,
     id: 'beats-basic',
-    name: 'Beats Basic Headphone',
+    name: 'Beats Basic',
     description: `Input Type: 3.5mm stereo jack
     Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
     Form Factor: On-Ear
@@ -96,7 +80,7 @@ const headphonesData: Product[] = [
   {
     index: 3,
     id: 'jbl-tune-510',
-    name: 'JBL Tune 510 Headphone',
+    name: 'JBL Tune 510',
     description: `Input Type: 3.5mm stereo jack
     Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
     Form Factor: On-Ear

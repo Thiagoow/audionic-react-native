@@ -2,6 +2,7 @@ export const colors = {
   primaryColor: '#060DD9',
   txtDarkColor: '#262626',
   starsColor: '#FFC420',
+  heartColor: '#F25555',
   containerColor: '#ECECFF',
   greyColor: '#CBCBCB',
   whiteColor: '#FFFFFF',
