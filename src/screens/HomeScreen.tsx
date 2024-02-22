@@ -10,6 +10,9 @@ import Header from '../components/Header'
 import CategoryOne from '../assets/categories/beats.svg'
 import CategoryTwo from '../assets/categories/jbl.svg'
 import CategoryThree from '../assets/categories/akg.svg'
+import headphonesData from '../data/headphones'
+import ProductCard from '../components/ProductCard'
+import { Product } from '../data/types'
 
 export default function HomeScreen() {
   return (
@@ -29,27 +32,44 @@ export default function HomeScreen() {
               style={styles.categoryCard}
               onPress={() => console.log('beats')}
             >
-              <CategoryOne fill={colors.blackColor} fontSize={25} />
+              <CategoryOne fill={colors.blackColor} />
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.categoryCard}
               onPress={() => console.log('jbl')}
             >
-              <CategoryTwo fill={colors.blackColor} fontSize={35} />
+              <CategoryTwo fill={colors.blackColor} />
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.categoryCard}
-              onPress={() => console.log('beats')}
+              onPress={() => console.log('akg')}
             >
-              <CategoryThree fill={colors.blackColor} width={50} />
+              <CategoryThree fill={colors.blackColor} />
             </TouchableOpacity>
           </ScrollView>
         </View>
 
         <View style={styles.beatsProducts}>
           <Text style={styles.label}>Beats products</Text>
+
+          <ScrollView
+            contentContainerStyle={styles.productsGrid}
+            showsVerticalScrollIndicator={false}
+          >
+            {headphonesData.map((product: Product) =>
+              product.type === 'Beats' ? (
+                <ProductCard
+                  {...product}
+                  key={product.id}
+                  imgUrl={product.image_link}
+                  productColors={product.colors}
+                  averageRating={product.average_rating}
+                />
+              ) : null
+            )}
+          </ScrollView>
         </View>
       </View>
     </View>
@@ -98,6 +118,13 @@ const styles = StyleSheet.create({
   },
   beatsProducts: {
     marginTop: 40,
-    rowGap: 14
+    rowGap: 14,
+    alignSelf: 'flex-start'
+  },
+  productsGrid: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    columnGap: 21,
+    rowGap: 21
   }
 })
