@@ -14,4 +14,11 @@ export interface ProductColor {
   color: string
   price: number
   available: boolean
+  blobBg:
+    | 'redCardBg'
+    | 'blueCardBg'
+    | 'purpleCardBg'
+    | 'pinkCardBg'
+    | 'blackCardBg'
+    | 'greyCardBg'
 }

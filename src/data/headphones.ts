@@ -12,9 +12,9 @@ const headphonesData: Product[] = [
     Speaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-pro.png'),
     colors: [
-      { color: 'red', price: 249.9, available: true },
-      { color: 'black', price: 249.9, available: true },
-      { color: 'pink', price: 249.9, available: false }
+      { color: 'red', blobBg: 'redCardBg', price: 249.9, available: true },
+      { color: 'black', blobBg: 'blackCardBg', price: 249.9, available: true },
+      { color: 'pink', blobBg: 'pinkCardBg', price: 249.9, available: false }
     ],
     average_rating: 5,
     favorite: true,
@@ -31,9 +31,9 @@ const headphonesData: Product[] = [
     Speaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-solo.png'),
     colors: [
-      { color: 'blue', price: 225, available: true },
-      { color: 'green', price: 225, available: false },
-      { color: 'yellow', price: 225, available: false }
+      { color: 'blue', blobBg: 'blueCardBg', price: 225, available: true },
+      { color: 'green', blobBg: 'blackCardBg', price: 225, available: false },
+      { color: 'yellow', blobBg: 'blackCardBg', price: 225, available: false }
     ],
     average_rating: 4,
     favorite: false,
@@ -50,9 +50,9 @@ const headphonesData: Product[] = [
     Speaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-sport-2.png'),
     colors: [
-      { color: 'purple', price: 160, available: true },
-      { color: 'red', price: 160, available: false },
-      { color: 'cyan', price: 160, available: false }
+      { color: 'purple', blobBg: 'purpleCardBg', price: 160, available: true },
+      { color: 'red', blobBg: 'redCardBg', price: 160, available: false },
+      { color: 'cyan', blobBg: 'blueCardBg', price: 160, available: false }
     ],
     average_rating: 3,
     favorite: true,
@@ -69,9 +69,9 @@ const headphonesData: Product[] = [
     Speaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-basic.png'),
     colors: [
-      { color: 'pink', price: 129.9, available: true },
-      { color: 'black', price: 129.9, available: false },
-      { color: 'blue', price: 129.9, available: true }
+      { color: 'pink', blobBg: 'pinkCardBg', price: 129.9, available: true },
+      { color: 'black', blobBg: 'blackCardBg', price: 129.9, available: false },
+      { color: 'blue', blobBg: 'blueCardBg', price: 129.9, available: true }
     ],
     average_rating: 2,
     favorite: false,
@@ -88,8 +88,8 @@ const headphonesData: Product[] = [
     Speaker Configurations: Stereo`,
     image_link: require('../assets/headphones/jbl-tune-510.png'),
     colors: [
-      { color: 'grey', price: 129.9, available: true },
-      { color: 'black', price: 129.9, available: false }
+      { color: 'grey', blobBg: 'greyCardBg', price: 129.9, available: true },
+      { color: 'black', blobBg: 'blackCardBg', price: 129.9, available: false }
     ],
     average_rating: 5,
     favorite: false,
@@ -105,7 +105,9 @@ const headphonesData: Product[] = [
     Connections: Bluetooth, Wireless
     Speaker Configurations: Stereo`,
     image_link: require('../assets/headphones/jbl-endurance-sprint.png'),
-    colors: [{ color: 'unique', price: 300, available: true }],
+    colors: [
+      { color: 'unique', blobBg: 'blackCardBg', price: 300, available: true }
+    ],
     average_rating: 2,
     favorite: false,
     type: 'JBL'

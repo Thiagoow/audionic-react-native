@@ -8,7 +8,9 @@ const speakersData: Product[] = [
     description: `Speaker Type: Bluetooth Speaker
     Connections: Bluetooth, Wireless`,
     image_link: require('../assets/speakers/jbl-pulse-3.png'),
-    colors: [{ color: 'unique', price: 400, available: true }],
+    colors: [
+      { color: 'unique', blobBg: 'pinkCardBg', price: 400, available: true }
+    ],
     average_rating: 3,
     favorite: false,
     type: 'JBL'
@@ -20,7 +22,9 @@ const speakersData: Product[] = [
     description: `Speaker Type: Bluetooth Speaker
     Connections: Bluetooth, Wireless`,
     image_link: require('../assets/speakers/jbl-flip-5.png'),
-    colors: [{ color: 'unique', price: 500, available: true }],
+    colors: [
+      { color: 'unique', blobBg: 'redCardBg', price: 500, available: true }
+    ],
     average_rating: 4,
     favorite: false,
     type: 'JBL'

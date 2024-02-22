@@ -9,7 +9,7 @@ import {
   Image
 } from 'react-native'
 import { colors } from '../theme/colors'
-import { Product } from '../data/types'
+import { Product, ProductColor } from '../data/types'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
 
 interface ProductCard
@@ -42,7 +42,10 @@ const ProductCard = ({ name, productColors, imgUrl, id }: ProductCard) => {
         </TouchableOpacity>
 
         <View style={styles.productVisual}>
-          <BlobBackground fill={colors.redCardBg} style={styles.productBlob} />
+          <BlobBackground
+            fill={colors[productColors[0].blobBg]}
+            style={styles.productBlob}
+          />
           <Image source={imgUrl} style={styles.productImg} />
         </View>
 

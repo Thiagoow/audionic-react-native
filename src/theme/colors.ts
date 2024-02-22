@@ -10,5 +10,7 @@ export const colors = {
   redCardBg: '#FF031210',
   blueCardBg: '#0803FF10',
   purpleCardBg: '#9E00FF10',
-  pinkCardBg: '#FF03C810'
+  pinkCardBg: '#FF03C810',
+  blackCardBg: '#00000010',
+  greyCardBg: '#0A004410'
 }
