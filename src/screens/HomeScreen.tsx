@@ -12,10 +12,11 @@ import CategoryTwo from '../assets/categories/jbl.svg'
 import CategoryThree from '../assets/categories/akg.svg'
 import headphonesData from '../data/headphones'
 import speakersData from '../data/speakers'
-import ProductCard from '../components/ProductCard'
-import { Product } from '../data/types'
+import ProductsGrid from '../components/ProductsGrid'
 
 export default function HomeScreen() {
+  const allProducts = [...speakersData, ...headphonesData]
+
   return (
     <View style={styles.container}>
       <Header home />
@@ -55,41 +56,18 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
 
-        <View style={styles.productsList}>
-          <Text style={styles.label}>Beats products</Text>
+        <ProductsGrid
+          title="Beats products"
+          data={headphonesData}
+          type="Beats"
+        />
 
-          <View style={styles.productsGrid}>
-            {headphonesData.map((product: Product) =>
-              product.type === 'Beats' ? (
-                <ProductCard
-                  {...product}
-                  key={product.id}
-                  imgUrl={product.image_link}
-                  productColors={product.colors}
-                  averageRating={product.average_rating}
-                />
-              ) : null
-            )}
-          </View>
-        </View>
-
-        <View style={[styles.productsList, { marginBottom: 46 }]}>
-          <Text style={styles.label}>JBL products</Text>
-
-          <View style={styles.productsGrid}>
-            {speakersData.map((product: Product) =>
-              product.type === 'JBL' ? (
-                <ProductCard
-                  {...product}
-                  key={product.id}
-                  imgUrl={product.image_link}
-                  productColors={product.colors}
-                  averageRating={product.average_rating}
-                />
-              ) : null
-            )}
-          </View>
-        </View>
+        <ProductsGrid
+          title="JBL products"
+          data={allProducts}
+          type="JBL"
+          marginBottom={46}
+        />
       </ScrollView>
     </View>
   )
@@ -134,16 +112,5 @@ const styles = StyleSheet.create({
       height: 2
     },
     shadowOpacity: 0.25
-  },
-  productsList: {
-    marginTop: 40,
-    rowGap: 14,
-    alignSelf: 'flex-start'
-  },
-  productsGrid: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    columnGap: 21,
-    rowGap: 21
   }
 })
