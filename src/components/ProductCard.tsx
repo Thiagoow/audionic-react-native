@@ -59,13 +59,13 @@ const ProductCard = ({
           />
         </TouchableOpacity>
 
-        <View style={styles.productVisual}>
+        <TouchableOpacity style={styles.productVisual}>
           <BlobBackground
             fill={colors[productColors[0].blobBg]}
             style={styles.productBlob}
           />
           <Image source={imgUrl} style={styles.productImg} />
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.productInfo}>
           <View style={styles.productDetails}>
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     color: colors.primaryColor
   },
   likeButton: {
+    zIndex: 1,
     width: 18,
     height: 18,
     position: 'absolute',
@@ -161,6 +162,7 @@ const styles = StyleSheet.create({
   productImg: {
     position: 'absolute',
     maxWidth: 62,
+    height: '100%',
     resizeMode: 'contain',
     transform: [{ rotateZ: '35deg' }]
   },
