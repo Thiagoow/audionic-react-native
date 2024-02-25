@@ -13,9 +13,14 @@ import CategoryThree from '../assets/categories/akg.svg'
 import headphonesData from '../data/headphones'
 import speakersData from '../data/speakers'
 import ProductsGrid from '../components/ProductsGrid'
+import { Product } from '../data/types'
 
 export default function HomeScreen() {
   const allProducts = [...speakersData, ...headphonesData]
+
+  function filterProductByBrand(brand: Product['brand']) {
+    return allProducts.filter((product: Product) => product.brand === brand)
+  }
 
   return (
     <View style={styles.container}>
@@ -58,14 +63,12 @@ export default function HomeScreen() {
 
         <ProductsGrid
           title="Beats products"
-          data={headphonesData}
-          brand="Beats"
+          data={filterProductByBrand('Beats')}
         />
 
         <ProductsGrid
           title="JBL products"
-          data={allProducts}
-          brand="JBL"
+          data={filterProductByBrand('JBL')}
           marginBottom={46}
         />
       </ScrollView>
