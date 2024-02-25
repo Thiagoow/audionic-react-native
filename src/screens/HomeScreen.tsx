@@ -6,14 +6,15 @@ import {
   ScrollView
 } from 'react-native'
 import { colors } from '../theme/colors'
+import { Product } from '../data/types'
+import headphonesData from '../data/headphones'
+import speakersData from '../data/speakers'
 import Header from '../components/Header'
+import ProductsGrid from '../components/ProductsGrid'
+import CategoryCard from '../components/CategoryCard'
 import CategoryOne from '../assets/categories/beats.svg'
 import CategoryTwo from '../assets/categories/jbl.svg'
 import CategoryThree from '../assets/categories/akg.svg'
-import headphonesData from '../data/headphones'
-import speakersData from '../data/speakers'
-import ProductsGrid from '../components/ProductsGrid'
-import { Product } from '../data/types'
 
 export default function HomeScreen() {
   const allProducts = [...speakersData, ...headphonesData]
@@ -27,37 +28,28 @@ export default function HomeScreen() {
       <Header home />
 
       <ScrollView
-        showsVerticalScrollIndicator={false}
         style={styles.backgroundRadius}
+        showsVerticalScrollIndicator={false}
       >
         <View style={styles.categories}>
           <Text style={styles.label}>Filter by brand</Text>
 
           <ScrollView
-            contentContainerStyle={styles.categoryScrollView}
             horizontal
             showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.categoryScrollView}
           >
-            <TouchableOpacity
-              style={styles.categoryCard}
-              onPress={() => console.log('beats')}
-            >
+            <CategoryCard>
               <CategoryOne fill={colors.blackColor} />
-            </TouchableOpacity>
+            </CategoryCard>
 
-            <TouchableOpacity
-              style={styles.categoryCard}
-              onPress={() => console.log('jbl')}
-            >
+            <CategoryCard>
               <CategoryTwo fill={colors.blackColor} />
-            </TouchableOpacity>
+            </CategoryCard>
 
-            <TouchableOpacity
-              style={styles.categoryCard}
-              onPress={() => console.log('akg')}
-            >
+            <CategoryCard>
               <CategoryThree fill={colors.blackColor} />
-            </TouchableOpacity>
+            </CategoryCard>
           </ScrollView>
         </View>
 
@@ -101,19 +93,5 @@ const styles = StyleSheet.create({
   categoryScrollView: {
     columnGap: 20,
     paddingRight: 20
-  },
-  categoryCard: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 40,
-    paddingVertical: 20,
-    borderRadius: 10,
-    backgroundColor: colors.whiteColor,
-    shadowColor: colors.blackColor,
-    shadowOffset: {
-      width: 2,
-      height: 2
-    },
-    shadowOpacity: 0.25
   }
 })
