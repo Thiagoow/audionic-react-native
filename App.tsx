@@ -1,19 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import TabNavigator from './src/navigators/TabNavigator'
-
-const Stack = createNativeStackNavigator()
+import MainStackNavigator from './src/navigators/StackNavigator'
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name="Tab"
-          component={TabNavigator}
-          options={{ animation: 'default' }}
-        ></Stack.Screen>
-      </Stack.Navigator>
+      <MainStackNavigator />
     </NavigationContainer>
   )
 }

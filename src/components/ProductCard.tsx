@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome6'
 import {
   StyleSheet,
   TouchableOpacity,
@@ -8,6 +7,9 @@ import {
   ImageProps,
   Image
 } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '../theme/colors'
 import { Product } from '../data/types'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
@@ -27,6 +29,7 @@ const ProductCard = ({
   productColors
 }: ProductCard) => {
   const [liked, setLiked] = useState(false)
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   function returnStars(averageRating: Product['average_rating']) {
     return Array.from({ length: 5 }, (item, index) => (
@@ -38,6 +41,10 @@ const ProductCard = ({
         style={{ color: colors.starsColor }}
       />
     ))
+  }
+
+  function goToDetails() {
+    navigation.push('Details', { id })
   }
 
   return useMemo(
@@ -60,7 +67,7 @@ const ProductCard = ({
           />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.productVisual}>
+        <TouchableOpacity style={styles.productVisual} onPress={goToDetails}>
           <BlobBackground
             fill={colors[productColors[0].blobBg]}
             style={styles.productBlob}
