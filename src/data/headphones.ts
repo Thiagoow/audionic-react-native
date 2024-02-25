@@ -18,7 +18,8 @@ const headphonesData: Product[] = [
     ],
     average_rating: 5,
     favorite: true,
-    type: 'Beats'
+    type: 'Headphones',
+    brand: 'Beats'
   },
   {
     index: 1,
@@ -37,7 +38,8 @@ const headphonesData: Product[] = [
     ],
     average_rating: 4,
     favorite: false,
-    type: 'Beats'
+    type: 'Headphones',
+    brand: 'Beats'
   },
   {
     index: 2,
@@ -56,7 +58,8 @@ const headphonesData: Product[] = [
     ],
     average_rating: 3,
     favorite: true,
-    type: 'Beats'
+    type: 'Headphones',
+    brand: 'Beats'
   },
   {
     index: 3,
@@ -75,7 +78,8 @@ const headphonesData: Product[] = [
     ],
     average_rating: 2,
     favorite: false,
-    type: 'Beats'
+    type: 'Headphones',
+    brand: 'Beats'
   },
   {
     index: 3,
@@ -93,7 +97,8 @@ const headphonesData: Product[] = [
     ],
     average_rating: 5,
     favorite: false,
-    type: 'JBL'
+    type: 'Headphones',
+    brand: 'JBL'
   },
   {
     index: 3,
@@ -110,7 +115,8 @@ const headphonesData: Product[] = [
     ],
     average_rating: 2,
     favorite: false,
-    type: 'JBL'
+    type: 'Headphones',
+    brand: 'JBL'
   }
 ]
 

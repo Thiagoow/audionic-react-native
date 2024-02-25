@@ -13,7 +13,8 @@ const speakersData: Product[] = [
     ],
     average_rating: 3,
     favorite: false,
-    type: 'JBL'
+    type: 'Speakers',
+    brand: 'JBL'
   },
   {
     index: 3,
@@ -27,7 +28,8 @@ const speakersData: Product[] = [
     ],
     average_rating: 4,
     favorite: false,
-    type: 'JBL'
+    type: 'Speakers',
+    brand: 'JBL'
   }
 ]
 

@@ -7,7 +7,8 @@ export interface Product {
   colors: ProductColor[]
   average_rating: number
   favorite: boolean
-  type: 'Beats' | 'JBL'
+  type: 'Headphones' | 'Speakers'
+  brand: 'Beats' | 'JBL' | 'AKG'
 }
 
 export interface ProductColor {
