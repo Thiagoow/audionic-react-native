@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView
-} from 'react-native'
+import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import { colors } from '../theme/colors'
 import { Product } from '../data/types'
 import headphonesData from '../data/headphones'
