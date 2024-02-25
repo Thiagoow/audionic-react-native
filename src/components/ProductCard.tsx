@@ -44,6 +44,7 @@ const ProductCard = ({
     () => (
       <View style={styles.productCard}>
         <TouchableOpacity
+          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           activeOpacity={0.8}
           style={[
             styles.likeButton,
@@ -85,7 +86,7 @@ const ProductCard = ({
 
           <View style={styles.cartButton}>
             <TouchableOpacity
-              activeOpacity={0.8}
+              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
               onPress={() => console.log('add to cart', id, liked)}
             >
               <Icon
