@@ -1,18 +1,18 @@
 import { useMemo } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, ViewProps } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '../theme/colors'
 import BrandLogo from '../assets/brand/audionicLogo.svg'
 
-interface HeaderProps {
+type HeaderProps = {
   home?: boolean
-}
+} & ViewProps
 
-const Header = ({ home }: HeaderProps) => {
+const Header = ({ home, ...rest }: HeaderProps) => {
   return useMemo(
     () => (
-      <View style={styles.headerBackground}>
+      <View style={styles.headerBackground} {...rest}>
         <StatusBar style="auto" />
 
         <Icon
@@ -30,7 +30,7 @@ const Header = ({ home }: HeaderProps) => {
         />
       </View>
     ),
-    [home]
+    [home,  Object.keys(rest)]
   )
 }
 
