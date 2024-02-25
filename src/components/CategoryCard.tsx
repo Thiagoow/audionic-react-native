@@ -1,18 +1,19 @@
-import { StyleSheet, ViewProps, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TouchableOpacityProps
+} from 'react-native'
 import { colors } from '../theme/colors'
 import { useMemo } from 'react'
 
 type CategoryCardProps = {
   children: React.ReactNode
-} & ViewProps
+} & TouchableOpacityProps
 
 const CategoryCard = ({ children, ...rest }: CategoryCardProps) => {
   return useMemo(
     () => (
-      <TouchableOpacity
-        style={styles.categoryCard}
-        onPress={() => console.log('beats')}
-      >
+      <TouchableOpacity style={styles.categoryCard} {...rest}>
         {children}
       </TouchableOpacity>
     ),
