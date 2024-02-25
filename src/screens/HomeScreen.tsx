@@ -59,13 +59,13 @@ export default function HomeScreen() {
         <ProductsGrid
           title="Beats products"
           data={headphonesData}
-          type="Beats"
+          brand="Beats"
         />
 
         <ProductsGrid
           title="JBL products"
           data={allProducts}
-          type="JBL"
+          brand="JBL"
           marginBottom={46}
         />
       </ScrollView>

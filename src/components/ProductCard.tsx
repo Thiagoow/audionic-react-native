@@ -9,7 +9,7 @@ import {
   Image
 } from 'react-native'
 import { colors } from '../theme/colors'
-import { Product, ProductColor } from '../data/types'
+import { Product } from '../data/types'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
 
 interface ProductCard
