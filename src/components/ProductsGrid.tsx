@@ -7,14 +7,14 @@ import ProductCard from '../components/ProductCard'
 type ProductsGridProps = {
   data: Product[]
   title?: string
-  type?: Product['type']
+  brand?: Product['brand']
   marginBottom?: number
 } & ViewProps
 
 const ProductsGrid = ({
   data,
   title,
-  type,
+  brand,
   marginBottom,
   ...rest
 }: ProductsGridProps) => {
@@ -25,7 +25,7 @@ const ProductsGrid = ({
 
         <View style={styles.productsGrid}>
           {data.map((product: Product) =>
-            product.type === type ? (
+            product.brand === brand ? (
               <ProductCard
                 {...product}
                 key={product.id}
@@ -38,7 +38,7 @@ const ProductsGrid = ({
         </View>
       </View>
     ),
-    [data, title, type, marginBottom, Object.keys(rest)]
+    [data, title, brand, marginBottom, Object.keys(rest)]
   )
 }
 
