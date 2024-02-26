@@ -12,9 +12,11 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '../theme/colors'
 import { Product } from '../data/types'
+import formatUSD from '../utils/formatPrice'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
+import StarsRating from './StarsRating'
 
-interface ProductCard
+export interface ProductCardProps
   extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {
   imgUrl: ImageProps['source']
   productColors: Product['colors']
@@ -28,21 +30,9 @@ const ProductCard = ({
   imgUrl,
   averageRating,
   productColors
-}: ProductCard) => {
+}: ProductCardProps) => {
   const [liked, setLiked] = useState(false)
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-
-  function returnStars(averageRating: Product['average_rating']) {
-    return Array.from({ length: 5 }, (item, index) => (
-      <Icon
-        key={index}
-        solid={index < Math.round(averageRating)}
-        name="star"
-        size={8}
-        style={{ color: colors.starsColor }}
-      />
-    ))
-  }
 
   function goToDetails() {
     navigation.push('Details', {
@@ -84,14 +74,11 @@ const ProductCard = ({
             <Text style={styles.productName}>{name}</Text>
 
             <View style={styles.starsContainer}>
-              {returnStars(averageRating)}
+              <StarsRating {...{ averageRating }} />
             </View>
 
             <Text style={styles.productPrice}>
-              {new Intl.NumberFormat('en-us', {
-                style: 'currency',
-                currency: 'USD'
-              }).format(productColors[0].price)}
+              {formatUSD(productColors[0].price)}
             </Text>
           </View>
 
