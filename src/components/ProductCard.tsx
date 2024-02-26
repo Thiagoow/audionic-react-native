@@ -24,6 +24,7 @@ interface ProductCard
 const ProductCard = ({
   id,
   name,
+  type,
   imgUrl,
   averageRating,
   productColors
@@ -44,7 +45,10 @@ const ProductCard = ({
   }
 
   function goToDetails() {
-    navigation.push('Details', { id })
+    navigation.push('Details', {
+      id,
+      type
+    })
   }
 
   return useMemo(
@@ -106,7 +110,7 @@ const ProductCard = ({
         </View>
       </View>
     ),
-    [liked, id, name, imgUrl, averageRating, productColors]
+    [liked, id, name, type, imgUrl, averageRating, productColors]
   )
 }
 

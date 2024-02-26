@@ -1,14 +1,26 @@
+import { RouteProp } from '@react-navigation/native'
 import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '../theme/colors'
+import { Product } from '../data/types'
 import Header from '../components/Header'
+import headphonesData from '../data/headphones'
+import speakersData from '../data/speakers'
 
-export default function DetailScreen() {
+interface DetailScreenProps {
+  route: RouteProp<{ params: Pick<Product, 'type' | 'id'> }, 'params'>
+}
+
+export default function DetailScreen({ route }: DetailScreenProps) {
+  const { id, type } = route.params
+  const data = type === 'Headphones' ? headphonesData : speakersData
+  const product = data.find((product: Product) => product.id === id) as Product
+
   return (
     <View style={styles.container}>
       <Header />
 
       <View style={styles.backgroundRadius}>
-        <Text>Detail</Text>
+        <Text>{product.name}</Text>
       </View>
     </View>
   )

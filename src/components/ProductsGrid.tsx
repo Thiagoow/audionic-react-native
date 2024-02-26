@@ -25,10 +25,12 @@ const ProductsGrid = ({
           {data.map((product: Product) => (
             <ProductCard
               {...product}
-              key={product.id}
-              imgUrl={product.image_link}
-              productColors={product.colors}
-              averageRating={product.average_rating}
+              {...{
+                key: product.id,
+                imgUrl: product.image_link,
+                productColors: product.colors,
+                averageRating: product.average_rating
+              }}
             />
           ))}
         </View>
