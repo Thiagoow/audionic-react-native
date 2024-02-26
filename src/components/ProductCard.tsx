@@ -15,6 +15,7 @@ import { Product } from '../data/types'
 import formatUSD from '../utils/formatPrice'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
 import StarsRating from './StarsRating'
+import LikeButton from './LikeButton'
 
 export interface ProductCardProps
   extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {
@@ -44,22 +45,7 @@ const ProductCard = ({
   return useMemo(
     () => (
       <View style={styles.productCard}>
-        <TouchableOpacity
-          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          activeOpacity={0.8}
-          style={[
-            styles.likeButton,
-            { backgroundColor: liked ? colors.heartColor : colors.greyColor }
-          ]}
-          onPress={() => setLiked(!liked)}
-        >
-          <Icon
-            solid
-            name="heart"
-            size={10}
-            style={{ color: colors.whiteColor }}
-          />
-        </TouchableOpacity>
+        <LikeButton {...{ liked, setLiked }} />
 
         <TouchableOpacity style={styles.productVisual} onPress={goToDetails}>
           <BlobBackground
@@ -123,17 +109,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '600',
     color: colors.primaryColor
-  },
-  likeButton: {
-    zIndex: 1,
-    width: 18,
-    height: 18,
-    position: 'absolute',
-    top: 12,
-    right: 12,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   productInfo: {
     flexDirection: 'row',
