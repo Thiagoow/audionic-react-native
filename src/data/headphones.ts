@@ -5,11 +5,7 @@ const headphonesData: Product[] = [
     index: 0,
     id: 'beats-pro',
     name: 'Beats Pro',
-    description: `Input Type: 3.5mm stereo jack
-    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
-    Form Factor: On-Ear
-    Connections: Bluetooth, Wireless
-    Speaker Configurations: Stereo`,
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-pro.png'),
     colors: [
       { color: 'red', blobBg: 'redCardBg', price: 249.9, available: true },
@@ -25,11 +21,7 @@ const headphonesData: Product[] = [
     index: 1,
     id: 'beats-solo',
     name: 'Beats Solo',
-    description: `Input Type: 3.5mm stereo jack
-    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
-    Form Factor: On-Ear
-    Connections: Bluetooth, Wireless
-    Speaker Configurations: Stereo`,
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-solo.png'),
     colors: [
       { color: 'blue', blobBg: 'blueCardBg', price: 225, available: true },
@@ -45,11 +37,7 @@ const headphonesData: Product[] = [
     index: 2,
     id: 'beats-sport-2',
     name: 'Beats Sport 2',
-    description: `Input Type: 3.5mm stereo jack
-    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
-    Form Factor: On-Ear
-    Connections: Bluetooth, Wireless
-    Speaker Configurations: Stereo`,
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-sport-2.png'),
     colors: [
       { color: 'purple', blobBg: 'purpleCardBg', price: 160, available: true },
@@ -65,11 +53,7 @@ const headphonesData: Product[] = [
     index: 3,
     id: 'beats-basic',
     name: 'Beats Basic',
-    description: `Input Type: 3.5mm stereo jack
-    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
-    Form Factor: On-Ear
-    Connections: Bluetooth, Wireless
-    Speaker Configurations: Stereo`,
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-basic.png'),
     colors: [
       { color: 'pink', blobBg: 'pinkCardBg', price: 129.9, available: true },
@@ -85,11 +69,7 @@ const headphonesData: Product[] = [
     index: 3,
     id: 'jbl-tune-510',
     name: 'JBL Tune 510',
-    description: `Input Type: 3.5mm stereo jack
-    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
-    Form Factor: On-Ear
-    Connections: Bluetooth, Wireless
-    Speaker Configurations: Stereo`,
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/jbl-tune-510.png'),
     colors: [
       { color: 'grey', blobBg: 'greyCardBg', price: 129.9, available: true },
@@ -104,11 +84,7 @@ const headphonesData: Product[] = [
     index: 3,
     id: 'jbl-endurance-sprint',
     name: 'JBL Endurance Sprint',
-    description: `Bluetooth In Ear Headphones
-    Other Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless
-    Form Factor: On-Ear
-    Connections: Bluetooth, Wireless
-    Speaker Configurations: Stereo`,
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/jbl-endurance-sprint.png'),
     colors: [
       { color: 'unique', blobBg: 'blackCardBg', price: 300, available: true }
