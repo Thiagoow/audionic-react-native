@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingLeft: 27,
     paddingVertical: 23,
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
     backgroundColor: colors.containerColor
   },
   label: {
