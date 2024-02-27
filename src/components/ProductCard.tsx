@@ -57,7 +57,13 @@ const ProductCard = ({
 
         <View style={styles.productInfo}>
           <View style={styles.productDetails}>
-            <Text style={styles.productName}>{name}</Text>
+            <Text
+              style={styles.productName}
+              numberOfLines={1}
+              ellipsizeMode="clip"
+            >
+              {name}
+            </Text>
 
             <View style={styles.starsContainer}>
               <StarsRating {...{ averageRating }} />
@@ -102,6 +108,7 @@ const styles = StyleSheet.create({
   },
   productName: {
     fontSize: 12,
+    maxWidth: 100,
     fontWeight: '600',
     color: colors.blackColor
   },

@@ -35,7 +35,10 @@ const Header = ({ home, ...rest }: HeaderProps) => {
       <View style={styles.headerBackground} {...rest}>
         <StatusBar style="auto" />
 
-        <TouchableOpacity onPress={home ? toggleDrawer : goBack}>
+        <TouchableOpacity
+          onPress={home ? toggleDrawer : goBack}
+          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+        >
           <Icon
             name={home ? 'bars' : 'arrow-left'}
             size={25}
@@ -43,9 +46,15 @@ const Header = ({ home, ...rest }: HeaderProps) => {
           />
         </TouchableOpacity>
 
-        <BrandLogo fill={colors.primaryColor} width={98} height={28} />
+        <BrandLogo
+          fill={colors.primaryColor}
+          style={{ width: 98, height: 28 }}
+        />
 
-        <TouchableOpacity onPress={home ? searchProducts : goToCart}>
+        <TouchableOpacity
+          onPress={home ? searchProducts : goToCart}
+          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+        >
           <Icon
             name={home ? 'magnifying-glass' : 'bag-shopping'}
             size={25}

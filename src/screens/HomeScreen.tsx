@@ -17,6 +17,10 @@ export default function HomeScreen() {
     return allProducts.filter((product: Product) => product.brand === brand)
   }
 
+  function listProductByBrand(brand: Product['brand']) {
+    console.log(`listing ${brand} products`)
+  }
+
   return (
     <View style={styles.container}>
       <Header home />
@@ -33,21 +37,21 @@ export default function HomeScreen() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.categoryScrollView}
           >
-            <CategoryCard onPress={() => console.log('beats')}>
+            <CategoryCard onPress={() => listProductByBrand('Beats')}>
               <CategoryOne
                 fill={colors.blackColor}
                 style={{ width: 25, height: 25 }}
               />
             </CategoryCard>
 
-            <CategoryCard onPress={() => console.log('jbl')}>
+            <CategoryCard onPress={() => listProductByBrand('JBL')}>
               <CategoryTwo
                 fill={colors.blackColor}
                 style={{ width: 35, height: 25 }}
               />
             </CategoryCard>
 
-            <CategoryCard onPress={() => console.log('akg')}>
+            <CategoryCard onPress={() => listProductByBrand('AKG')}>
               <CategoryThree
                 fill={colors.blackColor}
                 style={{ width: 50, height: 25 }}

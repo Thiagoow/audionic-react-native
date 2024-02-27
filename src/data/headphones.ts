@@ -4,7 +4,7 @@ const headphonesData: Product[] = [
   {
     index: 0,
     id: 'beats-pro',
-    name: 'Beats Pro',
+    name: 'Beats Pro Headset',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-pro.png'),
     colors: [
@@ -20,7 +20,7 @@ const headphonesData: Product[] = [
   {
     index: 1,
     id: 'beats-solo',
-    name: 'Beats Solo',
+    name: 'Beats Solo Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-solo.png'),
     colors: [
@@ -36,7 +36,7 @@ const headphonesData: Product[] = [
   {
     index: 2,
     id: 'beats-sport-2',
-    name: 'Beats Sport 2',
+    name: 'Beats Sport 2 Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-sport-2.png'),
     colors: [
@@ -52,7 +52,7 @@ const headphonesData: Product[] = [
   {
     index: 3,
     id: 'beats-basic',
-    name: 'Beats Basic',
+    name: 'Beats Basic Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/beats-basic.png'),
     colors: [
@@ -68,7 +68,7 @@ const headphonesData: Product[] = [
   {
     index: 3,
     id: 'jbl-tune-510',
-    name: 'JBL Tune 510',
+    name: 'JBL Tune 510 Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
     image_link: require('../assets/headphones/jbl-tune-510.png'),
     colors: [
