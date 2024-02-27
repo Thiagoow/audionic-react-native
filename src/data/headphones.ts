@@ -66,7 +66,7 @@ const headphonesData: Product[] = [
     brand: 'Beats'
   },
   {
-    index: 3,
+    index: 4,
     id: 'jbl-tune-510',
     name: 'JBL Tune 510 Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
@@ -81,7 +81,7 @@ const headphonesData: Product[] = [
     brand: 'JBL'
   },
   {
-    index: 3,
+    index: 5,
     id: 'jbl-endurance-sprint',
     name: 'JBL Endurance Sprint',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,

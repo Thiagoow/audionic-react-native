@@ -2,7 +2,7 @@ import { Product } from './types'
 
 const speakersData: Product[] = [
   {
-    index: 3,
+    index: 0,
     id: 'jbl-pulse-3',
     name: 'JBL Pulse 3 Speaker',
     description: `Speaker Type: Bluetooth Speaker\nConnections: Bluetooth, Wireless`,
@@ -16,7 +16,7 @@ const speakersData: Product[] = [
     brand: 'JBL'
   },
   {
-    index: 3,
+    index: 1,
     id: 'jbl-flip-5',
     name: 'JBL Flip 5 Speaker',
     description: `Speaker Type: Bluetooth Speaker\nConnections: Bluetooth, Wireless`,
