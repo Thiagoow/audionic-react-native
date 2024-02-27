@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import { RouteProp } from '@react-navigation/native'
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native'
 import { colors } from '../theme/colors'
 import { Product, ProductColor } from '../data/types'
 import Header from '../components/Header'
@@ -97,7 +104,12 @@ export default function DetailScreen({ route }: DetailScreenProps) {
           />
 
           <Text style={styles.label}>Details</Text>
-          <Text style={styles.productDescription}>{product.description}</Text>
+          <ScrollView
+            style={styles.descriptionScroll}
+            showsVerticalScrollIndicator={false}
+          >
+            <Text style={styles.productDescription}>{product.description}</Text>
+          </ScrollView>
 
           <View style={styles.actionButtons}>
             <TouchableOpacity
@@ -172,10 +184,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.primaryColor
   },
+  descriptionScroll: {
+    marginTop: 12,
+    maxHeight: 135,
+    marginBottom: 20
+  },
   productDescription: {
     fontSize: 13,
-    marginTop: 15,
-    marginBottom: 20,
     color: colors.blackColor,
     lineHeight: 22
   },
