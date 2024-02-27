@@ -26,6 +26,14 @@ export default function DetailScreen({ route }: DetailScreenProps) {
   } = product
   const [liked, setLiked] = useState(false)
 
+  function addToCart() {
+    console.log(`added ${product.id} to cart`)
+  }
+
+  function buyNow() {
+    console.log(`buy ${product.id} now`)
+  }
+
   return (
     <View style={styles.container}>
       <Header />
@@ -59,6 +67,7 @@ export default function DetailScreen({ route }: DetailScreenProps) {
               {productColors.map((item: ProductColor, index) => (
                 <TouchableOpacity
                   key={index}
+                  hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
                   disabled={!item.available}
                   style={[
                     styles.colorButton,
@@ -89,6 +98,27 @@ export default function DetailScreen({ route }: DetailScreenProps) {
 
           <Text style={styles.label}>Details</Text>
           <Text style={styles.productDescription}>{product.description}</Text>
+
+          <View style={styles.actionButtons}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={[styles.actionBtn, { backgroundColor: colors.greyColor }]}
+              onPress={addToCart}
+            >
+              <Text style={styles.cartText}>Add to cart</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={[
+                styles.actionBtn,
+                { backgroundColor: colors.primaryColor }
+              ]}
+              onPress={buyNow}
+            >
+              <Text style={styles.buyText}>Buy now</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -145,6 +175,7 @@ const styles = StyleSheet.create({
   productDescription: {
     fontSize: 13,
     marginTop: 15,
+    marginBottom: 20,
     color: colors.blackColor,
     lineHeight: 22
   },
@@ -178,8 +209,31 @@ const styles = StyleSheet.create({
   colorButton: {
     width: 20,
     height: 20,
-    borderRadius: 50,
-    borderColor: colors.greyColor,
-    borderWidth: 4
+    borderRadius: 50
+  },
+  actionButtons: {
+    width: '100%',
+    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    columnGap: 25
+  },
+  actionBtn: {
+    flex: 1,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 15,
+    paddingVertical: 15
+  },
+  cartText: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: colors.txtDarkColor
+  },
+  buyText: {
+    fontSize: 14,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+    color: colors.whiteColor
   }
 })
