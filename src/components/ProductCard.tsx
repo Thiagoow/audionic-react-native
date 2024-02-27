@@ -130,6 +130,8 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   productBlob: {
+    width: 92,
+    height: 87,
     marginTop: 15,
     marginBottom: 10
   },

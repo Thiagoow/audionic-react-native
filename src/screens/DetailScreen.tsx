@@ -112,16 +112,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    marginTop: 40
+    marginTop: 20
   },
   productBlob: {
     width: 206,
-    marginTop: 15,
-    marginBottom: 10
+    height: 195,
+    marginTop: 15
   },
   productImg: {
     position: 'absolute',
-    maxWidth: 200,
+    maxWidth: 138,
     height: '100%',
     resizeMode: 'contain',
     transform: [{ rotateZ: '35deg' }]

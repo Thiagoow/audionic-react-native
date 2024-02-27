@@ -34,15 +34,24 @@ export default function HomeScreen() {
             contentContainerStyle={styles.categoryScrollView}
           >
             <CategoryCard onPress={() => console.log('beats')}>
-              <CategoryOne fill={colors.blackColor} />
+              <CategoryOne
+                fill={colors.blackColor}
+                style={{ width: 25, height: 25 }}
+              />
             </CategoryCard>
 
             <CategoryCard onPress={() => console.log('jbl')}>
-              <CategoryTwo fill={colors.blackColor} />
+              <CategoryTwo
+                fill={colors.blackColor}
+                style={{ width: 35, height: 25 }}
+              />
             </CategoryCard>
 
             <CategoryCard onPress={() => console.log('akg')}>
-              <CategoryThree fill={colors.blackColor} />
+              <CategoryThree
+                fill={colors.blackColor}
+                style={{ width: 50, height: 25 }}
+              />
             </CategoryCard>
           </ScrollView>
         </View>
