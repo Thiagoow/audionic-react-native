@@ -10,11 +10,11 @@ import {
 } from 'react-native'
 import { colors } from '../theme/colors'
 import { Product, ProductColor } from '../data/types'
+import Icon from 'react-native-vector-icons/Entypo'
 import Header from '../components/Header'
 import StarsRating from '../components/StarsRating'
 import LikeButton from '../components/LikeButton'
-import headphonesData from '../data/headphones'
-import speakersData from '../data/speakers'
+import allProducts from '../data/data'
 import formatUSD from '../utils/formatPrice'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
 
@@ -23,15 +23,16 @@ interface DetailScreenProps {
 }
 
 export default function DetailScreen({ route }: DetailScreenProps) {
-  const { id, type } = route.params
-  const data = type === 'Headphones' ? headphonesData : speakersData
-  const product = data.find((product: Product) => product.id === id) as Product
+  const product = allProducts.find(
+    (product: Product) => product.id === route.params.id
+  ) as Product
   const {
     colors: productColors,
     image_link: imgUrl,
     average_rating: averageRating
   } = product
   const [liked, setLiked] = useState(false)
+  const [selectedColor, setSelectedColor] = useState(productColors[0].color)
 
   function addToCart() {
     console.log(`added ${product.id} to cart`)
@@ -39,6 +40,17 @@ export default function DetailScreen({ route }: DetailScreenProps) {
 
   function buyNow() {
     console.log(`buy ${product.id} now`)
+  }
+
+  function getColorButtonStyle(item: ProductColor) {
+    const isUniqueColor = item.color === 'unique'
+    const isSelectedColor = selectedColor === item.color
+
+    return {
+      backgroundColor: isUniqueColor ? colors.blackColor : item.color,
+      borderColor: isSelectedColor ? colors.blackColor : 'transparent',
+      opacity: item.available ? 1 : 0.2
+    }
   }
 
   return (
@@ -52,6 +64,30 @@ export default function DetailScreen({ route }: DetailScreenProps) {
             style={styles.productBlob}
           />
           <Image source={imgUrl} style={styles.productImg} />
+        </View>
+
+        <View style={styles.chevronActions}>
+          {product.index > 0 ? (
+            <TouchableOpacity
+              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              style={[styles.chevronButton, { left: 35 }]}
+            >
+              <Icon name="chevron-left" size={20} color={colors.primaryColor} />
+            </TouchableOpacity>
+          ) : null}
+
+          {product.index < 3 ? (
+            <TouchableOpacity
+              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              style={[styles.chevronButton, { right: 35 }]}
+            >
+              <Icon
+                name="chevron-right"
+                size={20}
+                color={colors.primaryColor}
+              />
+            </TouchableOpacity>
+          ) : null}
         </View>
 
         <View style={styles.productInfo}>
@@ -76,18 +112,8 @@ export default function DetailScreen({ route }: DetailScreenProps) {
                   key={index}
                   hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
                   disabled={!item.available}
-                  style={[
-                    styles.colorButton,
-                    {
-                      backgroundColor:
-                        item.color === 'unique'
-                          ? colors.blackColor
-                          : item.color,
-                      borderColor:
-                        index === 0 ? colors.greyColor : 'transparent'
-                    }
-                  ]}
-                  onPress={() => console.log(item.color)}
+                  style={[styles.colorButton, getColorButtonStyle(item)]}
+                  onPress={() => setSelectedColor(item.color)}
                 />
               ))}
             </View>
@@ -224,7 +250,8 @@ const styles = StyleSheet.create({
   colorButton: {
     width: 20,
     height: 20,
-    borderRadius: 50
+    borderRadius: 50,
+    borderWidth: 2
   },
   actionButtons: {
     width: '100%',
@@ -250,5 +277,25 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textTransform: 'uppercase',
     color: colors.whiteColor
+  },
+  chevronActions: {
+    flex: 1,
+    alignSelf: 'center',
+    bottom: 190,
+    width: '100%',
+    height: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    position: 'absolute'
+  },
+  chevronButton: {
+    width: 32,
+    height: 32,
+    alignSelf: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    justifyContent: 'center',
+    backgroundColor: colors.whiteColor,
+    borderRadius: 50
   }
 })

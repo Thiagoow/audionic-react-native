@@ -12,10 +12,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '../theme/colors'
 import { Product } from '../data/types'
-import formatUSD from '../utils/formatPrice'
-import BlobBackground from '../assets/brand/backgroundBlob.svg'
 import StarsRating from './StarsRating'
 import LikeButton from './LikeButton'
+import formatUSD from '../utils/formatPrice'
+import BlobBackground from '../assets/brand/backgroundBlob.svg'
 
 export interface ProductCardProps
   extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {
@@ -36,10 +36,7 @@ const ProductCard = ({
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   function goToDetails() {
-    navigation.push('Details', {
-      id,
-      type
-    })
+    navigation.push('Details', { id })
   }
 
   return useMemo(
@@ -118,6 +115,7 @@ const styles = StyleSheet.create({
     color: colors.primaryColor
   },
   productInfo: {
+    marginTop: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end'
