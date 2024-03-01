@@ -1,8 +1,8 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import { colors } from '../theme/colors'
 import { Product } from '../data/types'
-import headphonesData from '../data/headphones'
-import speakersData from '../data/speakers'
+import headphonesData from '../data/data'
+import allProducts from '../data/data'
 import Header from '../components/Header'
 import ProductsGrid from '../components/ProductsGrid'
 import CategoryCard from '../components/CategoryCard'
@@ -11,8 +11,6 @@ import CategoryTwo from '../assets/categories/jbl.svg'
 import CategoryThree from '../assets/categories/akg.svg'
 
 export default function HomeScreen() {
-  const allProducts = [...speakersData, ...headphonesData]
-
   function filterProductByBrand(brand: Product['brand']) {
     return allProducts.filter((product: Product) => product.brand === brand)
   }

@@ -1,6 +1,6 @@
 import { Product } from './types'
 
-const headphonesData: Product[] = [
+const allProducts: Product[] = [
   {
     index: 0,
     id: 'beats-pro',
@@ -66,7 +66,49 @@ const headphonesData: Product[] = [
     brand: 'Beats'
   },
   {
-    index: 4,
+    index: 0,
+    id: 'jbl-endurance-sprint',
+    name: 'JBL Endurance Sprint',
+    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
+    image_link: require('../assets/headphones/jbl-endurance-sprint.png'),
+    colors: [
+      { color: 'unique', blobBg: 'blackCardBg', price: 300, available: true }
+    ],
+    average_rating: 2,
+    favorite: false,
+    type: 'Headphones',
+    brand: 'JBL'
+  },
+  {
+    index: 1,
+    id: 'jbl-pulse-3',
+    name: 'JBL Pulse 3 Speaker',
+    description: `Speaker Type: Bluetooth Speaker\nConnections: Bluetooth, Wireless`,
+    image_link: require('../assets/speakers/jbl-pulse-3.png'),
+    colors: [
+      { color: 'unique', blobBg: 'pinkCardBg', price: 400, available: true }
+    ],
+    average_rating: 3,
+    favorite: false,
+    type: 'Speakers',
+    brand: 'JBL'
+  },
+  {
+    index: 2,
+    id: 'jbl-flip-5',
+    name: 'JBL Flip 5 Speaker',
+    description: `Speaker Type: Bluetooth Speaker\nConnections: Bluetooth, Wireless`,
+    image_link: require('../assets/speakers/jbl-flip-5.png'),
+    colors: [
+      { color: 'unique', blobBg: 'redCardBg', price: 500, available: true }
+    ],
+    average_rating: 3,
+    favorite: false,
+    type: 'Speakers',
+    brand: 'JBL'
+  },
+  {
+    index: 3,
     id: 'jbl-tune-510',
     name: 'JBL Tune 510 Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
@@ -79,21 +121,7 @@ const headphonesData: Product[] = [
     favorite: false,
     type: 'Headphones',
     brand: 'JBL'
-  },
-  {
-    index: 5,
-    id: 'jbl-endurance-sprint',
-    name: 'JBL Endurance Sprint',
-    description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
-    image_link: require('../assets/headphones/jbl-endurance-sprint.png'),
-    colors: [
-      { color: 'unique', blobBg: 'blackCardBg', price: 300, available: true }
-    ],
-    average_rating: 2,
-    favorite: false,
-    type: 'Headphones',
-    brand: 'JBL'
   }
 ]
 
-export default headphonesData
+export default allProducts
