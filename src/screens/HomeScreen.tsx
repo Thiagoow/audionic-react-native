@@ -1,7 +1,6 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import { colors } from '../theme/colors'
 import { Product } from '../data/types'
-import headphonesData from '../data/data'
 import allProducts from '../data/data'
 import Header from '../components/Header'
 import ProductsGrid from '../components/ProductsGrid'
