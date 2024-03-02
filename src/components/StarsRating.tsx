@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '../theme/colors'
-import { Product } from '../data/types'
+import { colors } from '@Theme/colors'
+import { Product } from '@Data/types'
 
 type StarsRatingProps = {
   averageRating: Product['average_rating']

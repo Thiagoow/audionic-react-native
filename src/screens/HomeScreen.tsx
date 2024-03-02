@@ -1,13 +1,13 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
-import { colors } from '../theme/colors'
-import { Product } from '../data/types'
-import allProducts from '../data/data'
-import Header from '../components/Header'
-import ProductsGrid from '../components/ProductsGrid'
-import CategoryCard from '../components/CategoryCard'
-import CategoryOne from '../assets/categories/beats.svg'
-import CategoryTwo from '../assets/categories/jbl.svg'
-import CategoryThree from '../assets/categories/akg.svg'
+import { colors } from '@Theme/colors'
+import { Product } from '@Data/types'
+import allProducts from '@Data/data'
+import Header from '@ComponentsHeader'
+import ProductsGrid from '@ComponentsProductsGrid'
+import CategoryCard from '@ComponentsCategoryCard'
+import CategoryOne from '@Assets/categories/beats.svg'
+import CategoryTwo from '@Assets/categories/jbl.svg'
+import CategoryThree from '@Assets/categories/akg.svg'
 
 export default function HomeScreen() {
   function filterProductByBrand(brand: Product['brand']) {

@@ -8,16 +8,16 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { colors } from '../theme/colors'
-import { Product, ProductColor } from '../data/types'
 import Icon from 'react-native-vector-icons/Entypo'
-import Header from '../components/Header'
-import StarsRating from '../components/StarsRating'
-import LikeButton from '../components/LikeButton'
-import allProducts from '../data/data'
-import formatUSD from '../utils/formatPrice'
-import BlobBackground from '../assets/brand/backgroundBlob.svg'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { colors } from '@Theme/colors'
+import allProducts from '@Data/data'
+import { Product, ProductColor } from '@Data/types'
+import Header from '@ComponentsHeader'
+import StarsRating from '@ComponentsStarsRating'
+import LikeButton from '@ComponentsLikeButton'
+import formatUSD from '@Utils/formatPrice'
+import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 
 interface DetailScreenProps {
   route: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>

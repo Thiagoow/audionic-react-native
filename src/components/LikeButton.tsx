@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '../theme/colors'
+import { colors } from '@Theme/colors'
 
 type LikeButtonProps = {
   liked: boolean

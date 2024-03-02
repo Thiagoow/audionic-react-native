@@ -10,12 +10,12 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '../theme/colors'
-import { Product } from '../data/types'
-import StarsRating from './StarsRating'
-import LikeButton from './LikeButton'
-import formatUSD from '../utils/formatPrice'
-import BlobBackground from '../assets/brand/backgroundBlob.svg'
+import { colors } from '@Theme/colors'
+import { Product } from '@Data/types'
+import StarsRating from '@ComponentsStarsRating'
+import LikeButton from '@ComponentsLikeButton'
+import formatUSD from '@Utils/formatPrice'
+import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 
 export interface ProductCardProps
   extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {

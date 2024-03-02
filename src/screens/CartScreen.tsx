@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { colors } from '../theme/colors'
-import Header from '../components/Header'
+import { colors } from '@Theme/colors'
+import Header from '@ComponentsHeader'
 
 export default function CartScreen() {
   return (

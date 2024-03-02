@@ -4,8 +4,8 @@ import { StyleSheet, View, ViewProps, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '../theme/colors'
-import BrandLogo from '../assets/brand/audionicLogo.svg'
+import { colors } from '@Theme/colors'
+import BrandLogo from '@Assets/brand/audionicLogo.svg'
 
 type HeaderProps = {
   home?: boolean

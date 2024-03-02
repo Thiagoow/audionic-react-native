@@ -1,10 +1,10 @@
+import { useMemo } from 'react'
 import {
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps
 } from 'react-native'
-import { colors } from '../theme/colors'
-import { useMemo } from 'react'
+import { colors } from '@Theme/colors'
 
 type CategoryCardProps = {
   children: React.ReactNode

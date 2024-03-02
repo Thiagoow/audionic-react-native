@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { StyleSheet, View, Text, ViewProps } from 'react-native'
-import { colors } from '../theme/colors'
-import { Product } from '../data/types'
-import ProductCard from '../components/ProductCard'
+import { colors } from '@Theme/colors'
+import { Product } from '@Data/types'
+import ProductCard from '@ComponentsProductCard'
 
 type ProductsGridProps = {
   data: Product[]
