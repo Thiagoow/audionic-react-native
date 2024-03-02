@@ -70,7 +70,10 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
         <View style={styles.productVisual}>
           <BlobBackground
             fill={colors[productColors[0].blobBg]}
-            style={styles.productBlob}
+            style={[
+              styles.productBlob,
+              { transform: [{ scaleX: productIndex % 2 === 0 ? 1 : -1 }] }
+            ]}
           />
           <Image source={imgUrl} style={styles.productImg} />
         </View>
