@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import TabNavigator from './TabNavigator'
-import DetailScreen from '../screens/DetailScreen'
+import TabNavigator from '@Navigators/TabNavigator'
+import DetailScreen from '@Screens/DetailScreen'
 
 const Stack = createNativeStackNavigator()
 

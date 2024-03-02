@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '../theme/colors'
-import HomeScreen from '../screens/HomeScreen'
-import FavoriteScreen from '../screens/FavoriteScreen'
-import CartScreen from '../screens/CartScreen'
-import ProfileScreen from '../screens/ProfileScreen'
+import { colors } from '@Theme/colors'
+import HomeScreen from '@Screens/HomeScreen'
+import FavoriteScreen from '@Screens/FavoriteScreen'
+import CartScreen from '@Screens/CartScreen'
+import ProfileScreen from '@Screens/ProfileScreen'
 
 const Tab = createBottomTabNavigator()
 

@@ -20,12 +20,12 @@ import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 
 interface DetailScreenProps {
-  route: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
-  navigation: NativeStackNavigationProp<any>
+  route?: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
+  navigation?: NativeStackNavigationProp<any>
 }
 
 export default function DetailScreen({ route, navigation }: DetailScreenProps) {
-  const { index: productIndex } = route.params
+  const { index: productIndex } = route?.params || { index: 0 }
   const product = allProducts[productIndex]
   const {
     colors: productColors,
@@ -47,7 +47,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   function updateProductIndex(isNext: boolean) {
     const newIndex = isNext ? productIndex + 1 : productIndex - 1
     if (newIndex >= 0 && newIndex < allProducts.length) {
-      navigation.setParams({ index: newIndex })
+      navigation?.setParams({ index: newIndex })
     }
   }
 
