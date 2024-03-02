@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { colors } from '../theme/colors'
 import { Product, ProductColor } from '../data/types'
 import Icon from 'react-native-vector-icons/Entypo'
@@ -19,18 +20,19 @@ import formatUSD from '../utils/formatPrice'
 import BlobBackground from '../assets/brand/backgroundBlob.svg'
 
 interface DetailScreenProps {
-  route: RouteProp<{ params: Pick<Product, 'type' | 'id'> }, 'params'>
+  route: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
+  navigation: NativeStackNavigationProp<any>
 }
 
-export default function DetailScreen({ route }: DetailScreenProps) {
-  const product = allProducts.find(
-    (product: Product) => product.id === route.params.id
-  ) as Product
+export default function DetailScreen({ route, navigation }: DetailScreenProps) {
+  const { index: productIndex } = route.params
+  const product = allProducts[productIndex]
   const {
     colors: productColors,
     image_link: imgUrl,
     average_rating: averageRating
   } = product
+
   const [liked, setLiked] = useState(false)
   const [selectedColor, setSelectedColor] = useState(productColors[0].color)
 
@@ -40,6 +42,13 @@ export default function DetailScreen({ route }: DetailScreenProps) {
 
   function buyNow() {
     console.log(`buy ${product.id} now`)
+  }
+
+  function updateProductIndex(isNext: boolean) {
+    const newIndex = isNext ? productIndex + 1 : productIndex - 1
+    if (newIndex >= 0 && newIndex < allProducts.length) {
+      navigation.setParams({ index: newIndex })
+    }
   }
 
   function getColorButtonStyle(item: ProductColor) {
@@ -67,8 +76,10 @@ export default function DetailScreen({ route }: DetailScreenProps) {
         </View>
 
         <View style={styles.chevronActions}>
-          {product.index > 0 ? (
+          {(product.brand === 'Beats' && product.index > 0) ||
+          (product.brand === 'JBL' && product.index > 4) ? (
             <TouchableOpacity
+              onPress={() => updateProductIndex(false)}
               hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
               style={[styles.chevronButton, { left: 35 }]}
             >
@@ -76,8 +87,11 @@ export default function DetailScreen({ route }: DetailScreenProps) {
             </TouchableOpacity>
           ) : null}
 
-          {product.index < 3 ? (
+          {(product.brand === 'Beats' && product.index < 3) ||
+          (product.brand === 'JBL' &&
+            product.index < allProducts.length - 1) ? (
             <TouchableOpacity
+              onPress={() => updateProductIndex(true)}
               hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
               style={[styles.chevronButton, { right: 35 }]}
             >

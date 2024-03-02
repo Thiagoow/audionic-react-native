@@ -26,6 +26,7 @@ export interface ProductCardProps
 
 const ProductCard = ({
   id,
+  index,
   name,
   type,
   imgUrl,
@@ -36,7 +37,7 @@ const ProductCard = ({
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   function goToDetails() {
-    navigation.push('Details', { id })
+    navigation.push('Details', { index })
   }
 
   return useMemo(

@@ -66,7 +66,7 @@ const allProducts: Product[] = [
     brand: 'Beats'
   },
   {
-    index: 0,
+    index: 4,
     id: 'jbl-endurance-sprint',
     name: 'JBL Endurance Sprint',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
@@ -80,7 +80,7 @@ const allProducts: Product[] = [
     brand: 'JBL'
   },
   {
-    index: 1,
+    index: 5,
     id: 'jbl-pulse-3',
     name: 'JBL Pulse 3 Speaker',
     description: `Speaker Type: Bluetooth Speaker\nConnections: Bluetooth, Wireless`,
@@ -94,7 +94,7 @@ const allProducts: Product[] = [
     brand: 'JBL'
   },
   {
-    index: 2,
+    index: 6,
     id: 'jbl-flip-5',
     name: 'JBL Flip 5 Speaker',
     description: `Speaker Type: Bluetooth Speaker\nConnections: Bluetooth, Wireless`,
@@ -108,7 +108,7 @@ const allProducts: Product[] = [
     brand: 'JBL'
   },
   {
-    index: 3,
+    index: 7,
     id: 'jbl-tune-510',
     name: 'JBL Tune 510 Headphone',
     description: `Input Type: 3.5mm stereo jack\nOther Features: Bluetooth, Foldable, Noise Isolation, Stereo, Stereo Bluetooth, Wireless\nForm Factor: On-Ear\nConnections: Bluetooth, Wireless\nSpeaker Configurations: Stereo`,
