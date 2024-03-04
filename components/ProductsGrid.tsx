@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { StyleSheet, View, Text, ViewProps } from 'react-native'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import { Product } from '@Data/types'
 import ProductCard from '@ComponentsProductCard'
 

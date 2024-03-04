@@ -6,14 +6,14 @@
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"],
-      "@Assets/*": ["src/assets/*"],
-      "@Components*": ["src/components/*"],
-      "@Data/*": ["src/data/*"],
-      "@Navigators/*": ["src/navigators/*"],
-      "@Screens/*": ["src/screens/*"],
-      "@Theme/*": ["src/theme/*"],
-      "@Utils/*": ["src/utils/*"]
+      "@app/*": ["./app/*"],
+      "@Assets/*": ["./assets/*"],
+      "@Components*": ["./components/*"],
+      "@Data/*": ["./data/*"],
+      "@Navigators/*": ["./navigators/*"],
+      "@Screens/*": ["./screens/*"],
+      "@Constants/*": ["./constants/*"],
+      "@Utils/*": ["./utils/*"]
     }
   }
 }

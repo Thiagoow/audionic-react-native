@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import { Product } from '@Data/types'
 import allProducts from '@Data/data'
 import Header from '@ComponentsHeader'

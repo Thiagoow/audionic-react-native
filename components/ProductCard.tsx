@@ -10,7 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import { Product } from '@Data/types'
 import StarsRating from '@ComponentsStarsRating'
 import LikeButton from '@ComponentsLikeButton'

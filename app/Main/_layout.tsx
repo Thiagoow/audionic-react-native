@@ -1,17 +1,11 @@
+import { Tabs } from 'expo-router'
 import { StyleSheet } from 'react-native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '@Theme/colors'
-import HomeScreen from '@Screens/HomeScreen'
-import FavoriteScreen from '@Screens/FavoriteScreen'
-import CartScreen from '@Screens/CartScreen'
-import ProfileScreen from '@Screens/ProfileScreen'
-
-const Tab = createBottomTabNavigator()
+import { colors } from '@Constants/colors'
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator
+    <Tabs
       screenOptions={{
         tabBarHideOnKeyboard: true,
         headerShown: false,
@@ -19,9 +13,8 @@ const TabNavigator = () => {
         tabBarStyle: styles.tabBarStyle
       }}
     >
-      <Tab.Screen
+      <Tabs.Screen
         name="Home"
-        component={HomeScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
@@ -31,11 +24,10 @@ const TabNavigator = () => {
             />
           )
         }}
-      ></Tab.Screen>
+      ></Tabs.Screen>
 
-      <Tab.Screen
+      <Tabs.Screen
         name="Favorite"
-        component={FavoriteScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
@@ -46,11 +38,10 @@ const TabNavigator = () => {
             />
           )
         }}
-      ></Tab.Screen>
+      ></Tabs.Screen>
 
-      <Tab.Screen
+      <Tabs.Screen
         name="Cart"
-        component={CartScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
@@ -60,11 +51,10 @@ const TabNavigator = () => {
             />
           )
         }}
-      ></Tab.Screen>
+      ></Tabs.Screen>
 
-      <Tab.Screen
+      <Tabs.Screen
         name="Profile"
-        component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Icon
@@ -75,8 +65,8 @@ const TabNavigator = () => {
             />
           )
         }}
-      ></Tab.Screen>
-    </Tab.Navigator>
+      ></Tabs.Screen>
+    </Tabs>
   )
 }
 

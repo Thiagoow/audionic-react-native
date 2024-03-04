@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps
 } from 'react-native'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 
 type CategoryCardProps = {
   children: React.ReactNode

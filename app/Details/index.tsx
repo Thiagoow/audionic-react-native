@@ -9,8 +9,7 @@ import {
   ScrollView
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import allProducts from '@Data/data'
 import { Product, ProductColor } from '@Data/types'
 import Header from '@ComponentsHeader'
@@ -18,14 +17,13 @@ import StarsRating from '@ComponentsStarsRating'
 import LikeButton from '@ComponentsLikeButton'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
+import { router } from 'expo-router'
 
 interface DetailScreenProps {
-  route?: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
-  navigation?: NativeStackNavigationProp<any>
+  productIndex: number
 }
 
-export default function DetailScreen({ route, navigation }: DetailScreenProps) {
-  const { index: productIndex } = route?.params || { index: 0 }
+export default function DetailScreen({ productIndex }: DetailScreenProps) {
   const product = allProducts[productIndex]
   const {
     colors: productColors,
@@ -47,7 +45,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   function updateProductIndex(isNext: boolean) {
     const newIndex = isNext ? productIndex + 1 : productIndex - 1
     if (newIndex >= 0 && newIndex < allProducts.length) {
-      navigation?.setParams({ index: newIndex })
+      router?.setParams({ index: newIndex.toString() })
     }
   }
 

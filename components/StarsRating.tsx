@@ -1,5 +1,5 @@
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import { Product } from '@Data/types'
 
 type StarsRatingProps = {

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import Header from '@ComponentsHeader'
 
 export default function ProfileScreen() {

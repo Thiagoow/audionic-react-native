@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { colors } from '@Theme/colors'
+import { colors } from '@Constants/colors'
 import Header from '@ComponentsHeader'
 
-export default function CartScreen() {
+export default function FavoriteScreen() {
   return (
     <View style={styles.container}>
       <Header />
 
       <View style={styles.backgroundRadius}>
-        <Text>Cart</Text>
+        <Text>Favorites</Text>
       </View>
     </View>
   )
