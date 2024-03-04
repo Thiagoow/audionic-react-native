@@ -7,18 +7,12 @@ import ProductCard from '@ComponentsProductCard'
 type ProductsGridProps = {
   data: Product[]
   title?: string
-  marginBottom?: number
 } & ViewProps
 
-const ProductsGrid = ({
-  data,
-  title,
-  marginBottom,
-  ...rest
-}: ProductsGridProps) => {
+const ProductsGrid = ({ data, title, ...rest }: ProductsGridProps) => {
   return useMemo(
     () => (
-      <View style={[styles.productsList, { marginBottom }]} {...rest}>
+      <View style={[styles.productsList]} {...rest}>
         {title ? <Text style={styles.label}>{title}</Text> : null}
 
         <View style={styles.productsGrid}>
@@ -36,7 +30,7 @@ const ProductsGrid = ({
         </View>
       </View>
     ),
-    [data, title, marginBottom, Object.keys(rest)]
+    [data, title, Object.keys(rest)]
   )
 }
 

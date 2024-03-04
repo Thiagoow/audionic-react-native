@@ -13,7 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { colors } from '@Theme/colors'
 import allProducts from '@Data/data'
 import { Product, ProductColor } from '@Data/types'
-import Header from '@ComponentsHeader'
+import AppLayout from '@ComponentsAppLayout'
 import StarsRating from '@ComponentsStarsRating'
 import LikeButton from '@ComponentsLikeButton'
 import formatUSD from '@Utils/formatPrice'
@@ -63,135 +63,112 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   }
 
   return (
-    <View style={styles.container}>
-      <Header />
+    <AppLayout fullHeight>
+      <View style={styles.productVisual}>
+        <BlobBackground
+          fill={colors[productColors[0].blobBg]}
+          style={[
+            styles.productBlob,
+            { transform: [{ scaleX: productIndex % 2 === 0 ? 1 : -1 }] }
+          ]}
+        />
+        <Image source={imgUrl} style={styles.productImg} />
+      </View>
 
-      <View style={styles.backgroundRadius}>
-        <View style={styles.productVisual}>
-          <BlobBackground
-            fill={colors[productColors[0].blobBg]}
-            style={[
-              styles.productBlob,
-              { transform: [{ scaleX: productIndex % 2 === 0 ? 1 : -1 }] }
-            ]}
-          />
-          <Image source={imgUrl} style={styles.productImg} />
-        </View>
-
-        <View style={styles.chevronActions}>
-          {(product.brand === 'Beats' && product.index > 0) ||
-          (product.brand === 'JBL' && product.index > 4) ? (
-            <TouchableOpacity
-              onPress={() => updateProductIndex(false)}
-              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              style={[styles.chevronButton, { left: 35 }]}
-            >
-              <Icon name="chevron-left" size={20} color={colors.primaryColor} />
-            </TouchableOpacity>
-          ) : null}
-
-          {(product.brand === 'Beats' && product.index < 3) ||
-          (product.brand === 'JBL' &&
-            product.index < allProducts.length - 1) ? (
-            <TouchableOpacity
-              onPress={() => updateProductIndex(true)}
-              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              style={[styles.chevronButton, { right: 35 }]}
-            >
-              <Icon
-                name="chevron-right"
-                size={20}
-                color={colors.primaryColor}
-              />
-            </TouchableOpacity>
-          ) : null}
-        </View>
-
-        <View style={styles.productInfo}>
-          <View style={styles.starsContainer}>
-            <StarsRating {...{ averageRating, size: 12 }} />
-          </View>
-
-          <Text style={styles.productName}>{product.name}</Text>
-
-          <Text style={styles.productPrice}>
-            {formatUSD(productColors[0].price)}
-          </Text>
-        </View>
-
-        <View style={styles.productDetails}>
-          <View style={styles.productColors}>
-            <Text style={styles.label}>Colors</Text>
-
-            <View style={styles.colorsContainer}>
-              {productColors.map((item: ProductColor, index) => (
-                <TouchableOpacity
-                  key={index}
-                  hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-                  disabled={!item.available}
-                  style={[styles.colorButton, getColorButtonStyle(item)]}
-                  onPress={() => setSelectedColor(item.color)}
-                />
-              ))}
-            </View>
-          </View>
-
-          <LikeButton
-            {...{
-              liked,
-              setLiked,
-              size: 26,
-              iconSize: 14,
-              position: { top: 40, right: 35 }
-            }}
-          />
-
-          <Text style={styles.label}>Details</Text>
-          <ScrollView
-            style={styles.descriptionScroll}
-            showsVerticalScrollIndicator={false}
+      <View style={styles.chevronActions}>
+        {(product.brand === 'Beats' && product.index > 0) ||
+        (product.brand === 'JBL' && product.index > 4) ? (
+          <TouchableOpacity
+            onPress={() => updateProductIndex(false)}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            style={[styles.chevronButton, { left: 35 }]}
           >
-            <Text style={styles.productDescription}>{product.description}</Text>
-          </ScrollView>
+            <Icon name="chevron-left" size={20} color={colors.primaryColor} />
+          </TouchableOpacity>
+        ) : null}
 
-          <View style={styles.actionButtons}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={[styles.actionBtn, { backgroundColor: colors.greyColor }]}
-              onPress={addToCart}
-            >
-              <Text style={styles.cartText}>Add to cart</Text>
-            </TouchableOpacity>
+        {(product.brand === 'Beats' && product.index < 3) ||
+        (product.brand === 'JBL' && product.index < allProducts.length - 1) ? (
+          <TouchableOpacity
+            onPress={() => updateProductIndex(true)}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            style={[styles.chevronButton, { right: 35 }]}
+          >
+            <Icon name="chevron-right" size={20} color={colors.primaryColor} />
+          </TouchableOpacity>
+        ) : null}
+      </View>
 
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={[
-                styles.actionBtn,
-                { backgroundColor: colors.primaryColor }
-              ]}
-              onPress={buyNow}
-            >
-              <Text style={styles.buyText}>Buy now</Text>
-            </TouchableOpacity>
+      <View style={styles.productInfo}>
+        <View style={styles.starsContainer}>
+          <StarsRating {...{ averageRating, size: 12 }} />
+        </View>
+
+        <Text style={styles.productName}>{product.name}</Text>
+
+        <Text style={styles.productPrice}>
+          {formatUSD(productColors[0].price)}
+        </Text>
+      </View>
+
+      <View style={styles.productDetails}>
+        <View style={styles.productColors}>
+          <Text style={styles.label}>Colors</Text>
+
+          <View style={styles.colorsContainer}>
+            {productColors.map((item: ProductColor, index) => (
+              <TouchableOpacity
+                key={index}
+                hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+                disabled={!item.available}
+                style={[styles.colorButton, getColorButtonStyle(item)]}
+                onPress={() => setSelectedColor(item.color)}
+              />
+            ))}
           </View>
+        </View>
+
+        <LikeButton
+          {...{
+            liked,
+            setLiked,
+            size: 26,
+            iconSize: 14,
+            position: { top: 40, right: 35 }
+          }}
+        />
+
+        <Text style={styles.label}>Details</Text>
+        <ScrollView
+          style={styles.descriptionScroll}
+          showsVerticalScrollIndicator={false}
+        >
+          <Text style={styles.productDescription}>{product.description}</Text>
+        </ScrollView>
+
+        <View style={styles.actionButtons}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={[styles.actionBtn, { backgroundColor: colors.greyColor }]}
+            onPress={addToCart}
+          >
+            <Text style={styles.cartText}>Add to cart</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={[styles.actionBtn, { backgroundColor: colors.primaryColor }]}
+            onPress={buyNow}
+          >
+            <Text style={styles.buyText}>Buy now</Text>
+          </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </AppLayout>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.whiteColor
-  },
-  backgroundRadius: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: colors.containerColor,
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30
-  },
   productVisual: {
     alignSelf: 'center',
     alignItems: 'center',

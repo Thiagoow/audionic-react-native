@@ -6,6 +6,7 @@ import HomeScreen from '@Screens/HomeScreen'
 import FavoriteScreen from '@Screens/FavoriteScreen'
 import CartScreen from '@Screens/CartScreen'
 import ProfileScreen from '@Screens/ProfileScreen'
+import Header from '@ComponentsHeader'
 
 const Tab = createBottomTabNavigator()
 
@@ -13,9 +14,8 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarHideOnKeyboard: true,
-        headerShown: false,
         tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: styles.tabBarStyle
       }}
     >
@@ -23,13 +23,14 @@ const TabNavigator = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               name="house"
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header home />
         }}
       ></Tab.Screen>
 
@@ -37,14 +38,15 @@ const TabNavigator = () => {
         name="Favorite"
         component={FavoriteScreen}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               solid
               name="heart"
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header />
         }}
       ></Tab.Screen>
 
@@ -52,13 +54,14 @@ const TabNavigator = () => {
         name="Cart"
         component={CartScreen}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               name="bag-shopping"
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header />
         }}
       ></Tab.Screen>
 
@@ -66,14 +69,15 @@ const TabNavigator = () => {
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               solid
               name="user"
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header />
         }}
       ></Tab.Screen>
     </Tab.Navigator>

@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import { colors } from '@Theme/colors'
 import { Product } from '@Data/types'
 import allProducts from '@Data/data'
-import Header from '@ComponentsHeader'
+import AppLayout from '@src/components/AppLayout'
 import ProductsGrid from '@ComponentsProductsGrid'
 import CategoryCard from '@ComponentsCategoryCard'
 import CategoryOne from '@Assets/categories/beats.svg'
@@ -19,73 +19,49 @@ export default function HomeScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <Header home />
+    <AppLayout contentPadding>
+      <View style={styles.categories}>
+        <Text style={styles.label}>Filter by brand</Text>
 
-      <ScrollView
-        style={styles.backgroundRadius}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.categories}>
-          <Text style={styles.label}>Filter by brand</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoryScrollView}
+        >
+          <CategoryCard onPress={() => listProductByBrand('Beats')}>
+            <CategoryOne
+              fill={colors.blackColor}
+              style={{ width: 25, height: 25 }}
+            />
+          </CategoryCard>
 
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.categoryScrollView}
-          >
-            <CategoryCard onPress={() => listProductByBrand('Beats')}>
-              <CategoryOne
-                fill={colors.blackColor}
-                style={{ width: 25, height: 25 }}
-              />
-            </CategoryCard>
+          <CategoryCard onPress={() => listProductByBrand('JBL')}>
+            <CategoryTwo
+              fill={colors.blackColor}
+              style={{ width: 35, height: 25 }}
+            />
+          </CategoryCard>
 
-            <CategoryCard onPress={() => listProductByBrand('JBL')}>
-              <CategoryTwo
-                fill={colors.blackColor}
-                style={{ width: 35, height: 25 }}
-              />
-            </CategoryCard>
+          <CategoryCard onPress={() => listProductByBrand('AKG')}>
+            <CategoryThree
+              fill={colors.blackColor}
+              style={{ width: 50, height: 25 }}
+            />
+          </CategoryCard>
+        </ScrollView>
+      </View>
 
-            <CategoryCard onPress={() => listProductByBrand('AKG')}>
-              <CategoryThree
-                fill={colors.blackColor}
-                style={{ width: 50, height: 25 }}
-              />
-            </CategoryCard>
-          </ScrollView>
-        </View>
+      <ProductsGrid
+        title="Beats products"
+        data={filterProductByBrand('Beats')}
+      />
 
-        <ProductsGrid
-          title="Beats products"
-          data={filterProductByBrand('Beats')}
-        />
-
-        <ProductsGrid
-          title="JBL products"
-          data={filterProductByBrand('JBL')}
-          marginBottom={46}
-        />
-      </ScrollView>
-    </View>
+      <ProductsGrid title="JBL products" data={filterProductByBrand('JBL')} />
+    </AppLayout>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.whiteColor
-  },
-  backgroundRadius: {
-    flex: 1,
-    width: '100%',
-    paddingLeft: 27,
-    paddingVertical: 23,
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
-    backgroundColor: colors.containerColor
-  },
   label: {
     fontSize: 14,
     fontWeight: '600',
