@@ -7,7 +7,7 @@ const Drawer = createDrawerNavigator()
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator screenOptions={{ headerShown: false }}>
-      <Drawer.Screen name="Splash" component={SplashScreen} />
+      <Drawer.Screen name="SplashScreen" component={SplashScreen} />
       <Drawer.Screen name="App" component={MainStackNavigator} />
     </Drawer.Navigator>
   )
