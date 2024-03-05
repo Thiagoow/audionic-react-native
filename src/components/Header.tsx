@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, View, ViewProps, TouchableOpacity } from 'react-native'
+import { DrawerActions } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
@@ -9,14 +10,17 @@ import BrandLogo from '@Assets/brand/audionicLogo.svg'
 
 type HeaderProps = {
   home?: boolean
-  toggleDrawer?: () => void
 } & ViewProps
 
-const Header = ({ home, toggleDrawer, ...rest }: HeaderProps) => {
+const Header = ({ home, ...rest }: HeaderProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   function goBack() {
     navigation.goBack()
+  }
+
+  function toggleDrawer() {
+    navigation.dispatch(DrawerActions.toggleDrawer())
   }
 
   function searchProducts() {
@@ -60,7 +64,7 @@ const Header = ({ home, toggleDrawer, ...rest }: HeaderProps) => {
         </TouchableOpacity>
       </View>
     ),
-    [home, toggleDrawer, Object.keys(rest)]
+    [home, Object.keys(rest)]
   )
 }
 

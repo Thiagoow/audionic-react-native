@@ -1,10 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { colors } from '@Theme/colors'
 
 export default function SplashScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
+  function goToHome() {
+    navigation.navigate('App')
+  }
+
   return (
     <View style={styles.container}>
-      <Text>SplashScreen</Text>
+      <TouchableOpacity onPress={goToHome}>
+        <Text>SplashScreen</Text>
+      </TouchableOpacity>
     </View>
   )
 }

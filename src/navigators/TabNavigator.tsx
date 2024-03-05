@@ -14,7 +14,6 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
         tabBarStyle: styles.tabBarStyle
@@ -30,7 +29,8 @@ const TabNavigator = () => {
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header home />
         }}
       ></Tab.Screen>
 
@@ -45,7 +45,8 @@ const TabNavigator = () => {
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header />
         }}
       ></Tab.Screen>
 
@@ -59,7 +60,8 @@ const TabNavigator = () => {
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header />
         }}
       ></Tab.Screen>
 
@@ -74,7 +76,8 @@ const TabNavigator = () => {
               size={25}
               color={focused ? colors.primaryColor : colors.greyColor}
             />
-          )
+          ),
+          header: () => <Header />
         }}
       ></Tab.Screen>
     </Tab.Navigator>
