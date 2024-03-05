@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, View, ViewProps, TouchableOpacity } from 'react-native'
+import { DrawerActions } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
@@ -19,7 +20,7 @@ const Header = ({ home, ...rest }: HeaderProps) => {
   }
 
   function toggleDrawer() {
-    console.log('Open drawer')
+    navigation.dispatch(DrawerActions.toggleDrawer())
   }
 
   function searchProducts() {

@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import MainStackNavigator from './src/navigators/StackNavigator'
+import DrawerNavigator from '@Navigators/DrawerNavigator'
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MainStackNavigator />
+      <DrawerNavigator />
     </NavigationContainer>
   )
 }
