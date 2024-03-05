@@ -9,17 +9,14 @@ import BrandLogo from '@Assets/brand/audionicLogo.svg'
 
 type HeaderProps = {
   home?: boolean
+  toggleDrawer?: () => void
 } & ViewProps
 
-const Header = ({ home, ...rest }: HeaderProps) => {
+const Header = ({ home, toggleDrawer, ...rest }: HeaderProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   function goBack() {
     navigation.goBack()
-  }
-
-  function toggleDrawer() {
-    console.log('Open drawer')
   }
 
   function searchProducts() {
@@ -63,7 +60,7 @@ const Header = ({ home, ...rest }: HeaderProps) => {
         </TouchableOpacity>
       </View>
     ),
-    [home, Object.keys(rest)]
+    [home, toggleDrawer, Object.keys(rest)]
   )
 }
 
