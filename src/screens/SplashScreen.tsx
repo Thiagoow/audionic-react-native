@@ -31,9 +31,9 @@ export default function SplashScreen() {
       <Image source={imgUrl} style={styles.backgroundImg} />
 
       <Slider
-        childrenContainer={styles.sliderChildrenContainer}
         onEndReached={goToHome}
         containerStyle={styles.sliderContainer}
+        childrenContainer={styles.sliderChildrenContainer}
         sliderElement={
           <View style={styles.sliderChevron}>
             <Icon name="chevron-right" size={20} color={colors.primaryColor} />
