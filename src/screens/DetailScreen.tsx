@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RouteProp } from '@react-navigation/native'
 import {
   StyleSheet,
@@ -35,6 +35,10 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
 
   const [liked, setLiked] = useState(false)
   const [selectedColor, setSelectedColor] = useState(productColors[0].color)
+
+  useEffect(() => {
+    setSelectedColor(productColors[0].color)
+  }, [productIndex])
 
   function addToCart() {
     console.log(`added ${product.id} to cart`)
