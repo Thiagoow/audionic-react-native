@@ -34,7 +34,7 @@ const Header = ({ home, ...rest }: HeaderProps) => {
   return useMemo(
     () => (
       <View style={styles.headerBackground} {...rest}>
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
 
         <TouchableOpacity
           onPress={home ? toggleDrawer : goBack}
