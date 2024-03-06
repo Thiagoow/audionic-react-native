@@ -26,6 +26,7 @@ export interface ProductCardProps
 
 const ProductCard = ({
   id,
+  brand,
   index,
   name,
   type,
@@ -50,7 +51,13 @@ const ProductCard = ({
             fill={colors[productColors[0].blobBg]}
             style={styles.productBlob}
           />
-          <Image source={imgUrl} style={styles.productImg} />
+          <Image
+            source={imgUrl}
+            style={[
+              styles.productImg,
+              { maxWidth: brand === 'Beats' ? 62 : 72 }
+            ]}
+          />
         </TouchableOpacity>
 
         <View style={styles.productInfo}>
@@ -87,7 +94,7 @@ const ProductCard = ({
         </View>
       </View>
     ),
-    [liked, id, name, type, imgUrl, averageRating, productColors]
+    [liked, id, brand, name, type, imgUrl, averageRating, productColors]
   )
 }
 
@@ -143,7 +150,6 @@ const styles = StyleSheet.create({
   },
   productImg: {
     position: 'absolute',
-    maxWidth: 62,
     height: '100%',
     resizeMode: 'contain',
     transform: [{ rotateZ: '35deg' }]

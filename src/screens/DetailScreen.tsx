@@ -72,7 +72,13 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
             { transform: [{ scaleX: productIndex % 2 === 0 ? 1 : -1 }] }
           ]}
         />
-        <Image source={imgUrl} style={styles.productImg} />
+        <Image
+          source={imgUrl}
+          style={[
+            styles.productImg,
+            { maxWidth: product.brand === 'Beats' ? 138 : 200 }
+          ]}
+        />
       </View>
 
       <View style={styles.chevronActions}>
@@ -183,7 +189,6 @@ const styles = StyleSheet.create({
   },
   productImg: {
     position: 'absolute',
-    maxWidth: 138,
     height: '100%',
     resizeMode: 'contain',
     transform: [{ rotateZ: '35deg' }]
