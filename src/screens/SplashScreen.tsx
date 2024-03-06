@@ -15,6 +15,12 @@ export default function SplashScreen() {
     navigation.navigate('App')
   }
 
+  const sliderElement = (
+    <View style={styles.sliderChevron}>
+      <Icon name="chevron-right" size={20} color={colors.primaryColor} />
+    </View>
+  )
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -32,13 +38,9 @@ export default function SplashScreen() {
 
       <Slider
         onEndReached={goToHome}
+        sliderElement={sliderElement}
         containerStyle={styles.sliderContainer}
         childrenContainer={styles.sliderChildrenContainer}
-        sliderElement={
-          <View style={styles.sliderChevron}>
-            <Icon name="chevron-right" size={20} color={colors.primaryColor} />
-          </View>
-        }
       >
         <View>
           <Text style={styles.sliderText}>Swipe to access</Text>
@@ -70,6 +72,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.whiteColor
   },
+  backgroundImg: {
+    zIndex: -1,
+    position: 'absolute',
+    opacity: 0.3,
+    left: 30,
+    bottom: 0,
+    width: 430,
+    height: 646,
+    resizeMode: 'contain'
+  },
   sliderContainer: {
     position: 'absolute',
     bottom: 80,
@@ -82,13 +94,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  sliderChildrenContainer: {
+    alignSelf: 'flex-end'
+  },
   sliderText: {
     fontSize: 17,
     marginRight: 20,
     color: colors.whiteColor
-  },
-  sliderChildrenContainer: {
-    alignSelf: 'flex-end'
   },
   sliderChevron: {
     margin: 6,
@@ -98,15 +110,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.whiteColor
-  },
-  backgroundImg: {
-    zIndex: -1,
-    position: 'absolute',
-    opacity: 0.3,
-    left: 30,
-    bottom: 0,
-    width: 430,
-    height: 646,
-    resizeMode: 'contain'
   }
 })
