@@ -1,3 +1,12 @@
+import { ImageProps } from 'react-native'
+
+export interface ProductCardProps
+  extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {
+  imgUrl: ImageProps['source']
+  productColors: Product['colors']
+  averageRating: Product['average_rating']
+}
+
 export interface Product {
   index: number
   id: string

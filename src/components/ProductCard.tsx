@@ -1,28 +1,14 @@
 import { useMemo, useState } from 'react'
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text,
-  ImageProps,
-  Image
-} from 'react-native'
+import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '@Theme/colors'
-import { Product } from '@Data/types'
+import { ProductCardProps } from '@Data/types'
 import StarsRating from '@ComponentsStarsRating'
 import LikeButton from '@ComponentsLikeButton'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
-
-export interface ProductCardProps
-  extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {
-  imgUrl: ImageProps['source']
-  productColors: Product['colors']
-  averageRating: Product['average_rating']
-}
 
 const ProductCard = ({
   id,

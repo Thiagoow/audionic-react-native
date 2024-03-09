@@ -27,17 +27,12 @@ interface DetailScreenProps {
 export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   const { index: productIndex } = route?.params || { index: 0 }
   const product = allProducts[productIndex]
-  const {
-    colors: productColors,
-    image_link: imgUrl,
-    average_rating: averageRating
-  } = product
 
   const [liked, setLiked] = useState(false)
-  const [selectedColor, setSelectedColor] = useState(productColors[0].color)
+  const [selectedColor, setSelectedColor] = useState(product.colors[0].color)
 
   useEffect(() => {
-    setSelectedColor(productColors[0].color)
+    setSelectedColor(product.colors[0].color)
   }, [productIndex])
 
   function addToCart() {
@@ -70,14 +65,14 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
     <AppLayout fullHeight>
       <View style={styles.productVisual}>
         <BlobBackground
-          fill={colors[productColors[0].blobBg]}
+          fill={colors[product.colors[0].blobBg]}
           style={[
             styles.productBlob,
             { transform: [{ scaleX: productIndex % 2 === 0 ? 1 : -1 }] }
           ]}
         />
         <Image
-          source={imgUrl}
+          source={product.image_link}
           style={[
             styles.productImg,
             { maxWidth: product.brand === 'Beats' ? 138 : 200 }
@@ -111,13 +106,15 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
 
       <View style={styles.productInfo}>
         <View style={styles.starsContainer}>
-          <StarsRating {...{ averageRating, size: 12 }} />
+          <StarsRating
+            {...{ averageRating: product.average_rating, size: 12 }}
+          />
         </View>
 
         <Text style={styles.productName}>{product.name}</Text>
 
         <Text style={styles.productPrice}>
-          {formatUSD(productColors[0].price)}
+          {formatUSD(product.colors[0].price)}
         </Text>
       </View>
 
@@ -126,7 +123,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
           <Text style={styles.label}>Colors</Text>
 
           <View style={styles.colorsContainer}>
-            {productColors.map((item: ProductColor, index) => (
+            {product.colors.map((item: ProductColor, index) => (
               <TouchableOpacity
                 key={index}
                 hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
