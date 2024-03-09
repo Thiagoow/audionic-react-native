@@ -44,6 +44,7 @@ const FavoriteCard = ({
   return useMemo(
     () => (
       <TouchableOpacity
+        activeOpacity={0.6}
         onPress={goToDetails}
         style={styles.container}
         {...rest}
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   },
   productBlob: {
     width: 58,
-    height: 55
+    height: 62
   },
   productImg: {
     position: 'absolute',
@@ -148,6 +149,7 @@ const styles = StyleSheet.create({
   },
   actionBtns: {
     height: '100%',
+    maxHeight: '100%',
     position: 'relative'
   },
   cartBtn: {

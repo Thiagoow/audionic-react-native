@@ -34,7 +34,7 @@ export default function FavoriteScreen() {
 
       {favorites.length ? (
         <ScrollView
-          contentContainerStyle={styles.favoritesScroll}
+          contentContainerStyle={styles.itemsScroll}
           showsVerticalScrollIndicator={false}
         >
           {favorites.map((product) => (
@@ -107,9 +107,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.blackCardBg
   },
-  favoritesScroll: {
+  itemsScroll: {
     width: '100%',
     rowGap: 20,
+    paddingBottom: 20,
     paddingHorizontal: 35,
     alignSelf: 'center'
   }
