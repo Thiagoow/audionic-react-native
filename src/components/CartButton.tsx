@@ -3,16 +3,25 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { colors } from '@Theme/colors'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 
-type CartButtonProps = {} & TouchableOpacityProps
+type CartButtonProps = {
+  iconSize?: number
+} & TouchableOpacityProps
 
-const CartButton = ({ hitSlop, onPress, ...rest }: CartButtonProps) => {
+const CartButton = ({ iconSize, ...rest }: CartButtonProps) => {
   return useMemo(
     () => (
-      <TouchableOpacity {...{ hitSlop, onPress }}>
-        <Icon name="cart-shopping" size={16} color={colors.txtDarkColor} />
+      <TouchableOpacity
+        hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+        {...rest}
+      >
+        <Icon
+          name="cart-shopping"
+          size={iconSize || 16}
+          color={colors.txtDarkColor}
+        />
       </TouchableOpacity>
     ),
-    [hitSlop, onPress, Object.keys(rest)]
+    [iconSize, Object.keys(rest)]
   )
 }
 

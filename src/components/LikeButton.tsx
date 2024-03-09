@@ -43,6 +43,7 @@ const LikeButton = ({
           }
         ]}
         onPress={() => setLiked(!liked)}
+        {...rest}
       >
         <Icon
           solid
