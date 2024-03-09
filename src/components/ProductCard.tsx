@@ -2,11 +2,11 @@ import { useMemo, useState } from 'react'
 import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '@Theme/colors'
 import { ProductCardProps } from '@Data/types'
 import StarsRating from '@ComponentsStarsRating'
 import LikeButton from '@ComponentsLikeButton'
+import CartButton from '@ComponentsCartButton'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 
@@ -66,16 +66,10 @@ const ProductCard = ({
           </View>
 
           <View style={styles.cartButton}>
-            <TouchableOpacity
+            <CartButton
               hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
               onPress={() => console.log('add to cart', id, liked)}
-            >
-              <Icon
-                name="cart-shopping"
-                size={16}
-                color={colors.txtDarkColor}
-              />
-            </TouchableOpacity>
+            />
           </View>
         </View>
       </View>
