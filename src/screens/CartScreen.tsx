@@ -1,14 +1,29 @@
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  ScrollView
+} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { Product } from '@Data/types'
 import { colors } from '@Theme/colors'
 import AppLayout from '@ComponentsAppLayout'
+import ShoppingCard from '@ComponentsShoppingCard'
 
 export default function CartScreen() {
   const cart: Product[] = []
 
   function deleteAllOnCart() {
     console.log('delete all from cart')
+  }
+
+  function increaseQty() {
+    console.log('increase qty')
+  }
+
+  function decreaseQty() {
+    console.log('decrease qty')
   }
 
   return (
@@ -18,7 +33,24 @@ export default function CartScreen() {
       </TouchableOpacity>
 
       {cart.length ? (
-        cart.map((product) => <Text key={product.id}>{product.name}</Text>)
+        <ScrollView
+          contentContainerStyle={styles.itemsScroll}
+          showsVerticalScrollIndicator={false}
+        >
+          {cart.map((product) => (
+            <ShoppingCard
+              {...product}
+              {...{
+                key: product.id,
+                imgUrl: product.image_link,
+                productColors: product.colors,
+                averageRating: product.average_rating,
+                increaseQty,
+                decreaseQty
+              }}
+            />
+          ))}
+        </ScrollView>
       ) : (
         <View style={styles.emptyCart}>
           <Icon
@@ -65,5 +97,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: colors.blackCardBg
+  },
+  itemsScroll: {
+    width: '100%',
+    rowGap: 22,
+    paddingBottom: 20,
+    paddingHorizontal: 35,
+    alignSelf: 'center'
   }
 })
