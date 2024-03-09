@@ -45,7 +45,7 @@ const allProducts: Product[] = [
       { color: 'cyan', blobBg: 'blueCardBg', price: 160, available: false }
     ],
     average_rating: 3,
-    favorite: true,
+    favorite: false,
     type: 'Headphones',
     brand: 'Beats'
   },
@@ -75,7 +75,7 @@ const allProducts: Product[] = [
       { color: 'unique', blobBg: 'blackCardBg', price: 300, available: true }
     ],
     average_rating: 2,
-    favorite: false,
+    favorite: true,
     type: 'Headphones',
     brand: 'JBL'
   },

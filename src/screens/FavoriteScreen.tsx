@@ -1,14 +1,26 @@
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  ScrollView
+} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { Product } from '@Data/types'
+import allProducts from '@Data/data'
 import { colors } from '@Theme/colors'
 import AppLayout from '@ComponentsAppLayout'
+import FavoriteCard from '@ComponentsFavoriteCard'
+import { Product } from '@src/data/types'
 
 export default function FavoriteScreen() {
-  const favorites: Product[] = [] // allProducts.filter((product) => product.favorite)
+  const favorites: Product[] = allProducts.filter((product) => product.favorite)
 
   function deleteAllFavorites() {
     console.log('delete all favorites')
+  }
+
+  function deleteFavorite(index: number) {
+    console.log('delete favorite', index)
   }
 
   return (
@@ -21,7 +33,24 @@ export default function FavoriteScreen() {
       </TouchableOpacity>
 
       {favorites.length ? (
-        favorites.map((product) => <Text key={product.id}>{product.name}</Text>)
+        <ScrollView
+          contentContainerStyle={styles.favoritesScroll}
+          showsVerticalScrollIndicator={false}
+        >
+          {favorites.map((product) => (
+            <FavoriteCard
+              {...product}
+              {...{
+                key: product.id,
+                liked: product.favorite,
+                setLiked: () => deleteFavorite(product.index),
+                imgUrl: product.image_link,
+                productColors: product.colors,
+                averageRating: product.average_rating
+              }}
+            />
+          ))}
+        </ScrollView>
       ) : (
         <View style={styles.emptyFavorites}>
           <View style={styles.emptyIcon}>
@@ -77,5 +106,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: colors.blackCardBg
+  },
+  favoritesScroll: {
+    width: '100%',
+    rowGap: 20,
+    paddingHorizontal: 35,
+    alignSelf: 'center'
   }
 })
