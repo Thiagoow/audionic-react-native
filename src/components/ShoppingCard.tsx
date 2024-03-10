@@ -152,17 +152,20 @@ const styles = StyleSheet.create({
     fontSize: 12,
     maxWidth: 100,
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },
   productPrice: {
     fontSize: 12,
     maxWidth: 100,
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.primaryColor
   },
   productDescription: {
     fontSize: 10,
     fontWeight: '400',
+    fontFamily: 'Poppins_400Regular',
     color: colors.blackColor
   },
   actionBtns: {
@@ -185,6 +188,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
     textAlign: 'right',
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.txtDarkColor
   }
 })

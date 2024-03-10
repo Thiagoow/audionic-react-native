@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     maxWidth: 200,
     fontWeight: '600',
     textAlign: 'center',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.blackCardBg
   },
   itemsScroll: {

@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 17,
+    fontFamily: 'Poppins_400Regular',
     maxWidth: 200,
     lineHeight: 28,
     textAlign: 'center',
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
   },
   sliderText: {
     fontSize: 17,
+    fontFamily: 'Poppins_400Regular',
     marginRight: 20,
     color: colors.whiteColor
   },

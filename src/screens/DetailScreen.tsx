@@ -195,19 +195,21 @@ const styles = StyleSheet.create({
     transform: [{ rotateZ: '35deg' }]
   },
   productInfo: {
-    rowGap: 10,
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center'
   },
   productName: {
     fontSize: 14,
+    marginTop: 10,
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },
   productPrice: {
     fontSize: 13,
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.primaryColor
   },
   descriptionScroll: {
@@ -217,6 +219,7 @@ const styles = StyleSheet.create({
   },
   productDescription: {
     fontSize: 13,
+    fontFamily: 'Poppins_400Regular',
     color: colors.blackColor,
     lineHeight: 22
   },
@@ -237,6 +240,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 13,
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },
   starsContainer: {
@@ -270,11 +274,13 @@ const styles = StyleSheet.create({
   cartText: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: 'Poppins_500Medium',
     color: colors.txtDarkColor
   },
   buyText: {
     fontSize: 14,
     fontWeight: '600',
+    fontFamily: 'Poppins_600SemiBold',
     textTransform: 'uppercase',
     color: colors.whiteColor
   },
