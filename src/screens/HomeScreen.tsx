@@ -1,17 +1,20 @@
+import { useContext } from 'react'
 import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import { colors } from '@Theme/colors'
 import { Product } from '@Data/types'
-import allProducts from '@Data/data'
 import AppLayout from '@src/components/AppLayout'
 import ProductsGrid from '@ComponentsProductsGrid'
 import CategoryCard from '@ComponentsCategoryCard'
 import CategoryOne from '@Assets/categories/beats.svg'
 import CategoryTwo from '@Assets/categories/jbl.svg'
 import CategoryThree from '@Assets/categories/akg.svg'
+import { GlobalContext } from '@Context/GlobalState'
 
 export default function HomeScreen() {
+  const { products } = useContext(GlobalContext)
+
   function filterProductByBrand(brand: Product['brand']) {
-    return allProducts.filter((product: Product) => product.brand === brand)
+    return products.filter((product: Product) => product.brand === brand)
   }
 
   function listProductByBrand(brand: Product['brand']) {
