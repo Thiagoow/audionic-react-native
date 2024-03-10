@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useContext } from 'react'
 import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -9,6 +9,8 @@ import LikeButton from '@ComponentsLikeButton'
 import CartButton from '@ComponentsCartButton'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
+import { GlobalContext } from '@Context/GlobalState'
+import allProducts from '@Data/data'
 
 const ProductCard = ({
   id,
@@ -20,8 +22,10 @@ const ProductCard = ({
   averageRating,
   productColors
 }: ProductCardProps) => {
-  const [liked, setLiked] = useState(false)
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const { isOnFavorite, toggleFavorite, addToCart } = useContext(GlobalContext)
+  const product = allProducts[index]
+  const liked = isOnFavorite(id)
 
   function goToDetails() {
     navigation.push('Details', { index })
@@ -30,7 +34,12 @@ const ProductCard = ({
   return useMemo(
     () => (
       <View style={styles.productCard}>
-        <LikeButton {...{ liked, setLiked }} />
+        <LikeButton
+          {...{
+            liked,
+            toggleLiked: () => toggleFavorite(product)
+          }}
+        />
 
         <TouchableOpacity style={styles.productVisual} onPress={goToDetails}>
           <BlobBackground
@@ -68,7 +77,7 @@ const ProductCard = ({
           <View style={styles.cartButton}>
             <CartButton
               hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              onPress={() => console.log('add to cart', id, liked)}
+              onPress={() => addToCart(product)}
             />
           </View>
         </View>

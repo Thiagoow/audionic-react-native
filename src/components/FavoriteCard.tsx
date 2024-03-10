@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useContext } from 'react'
 import {
   StyleSheet,
   Text,
@@ -14,6 +14,8 @@ import { colors } from '@Theme/colors'
 import LikeButton from '@ComponentsLikeButton'
 import CartButton from '@ComponentsCartButton'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
+import { GlobalContext } from '@Context/GlobalState'
+import allProducts from '@Data/data'
 
 type FavoriteCardProps = ProductCardProps & {
   liked: boolean
@@ -21,24 +23,23 @@ type FavoriteCardProps = ProductCardProps & {
 } & TouchableOpacityProps
 
 const FavoriteCard = ({
+  id,
+  liked,
   index,
   imgUrl,
   name,
   brand,
   productColors,
   description,
-  liked,
   setLiked,
   ...rest
 }: FavoriteCardProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
+  const { toggleFavorite, addToCart } = useContext(GlobalContext)
+  const product = allProducts[index]
 
   function goToDetails() {
     navigation.push('Details', { index })
-  }
-
-  function addToCart() {
-    console.log('add to cart', index)
   }
 
   return useMemo(
@@ -82,14 +83,16 @@ const FavoriteCard = ({
           <LikeButton
             {...{
               liked,
-              setLiked,
+              toggleLiked: () => toggleFavorite(product),
               size: 20,
               iconSize: 11,
               position: { top: -1, right: -1 }
             }}
           />
 
-          <CartButton {...{ onPress: addToCart, style: styles.cartBtn }} />
+          <CartButton
+            {...{ onPress: () => addToCart(product), style: styles.cartBtn }}
+          />
         </View>
       </TouchableOpacity>
     ),

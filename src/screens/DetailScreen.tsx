@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { RouteProp } from '@react-navigation/native'
 import {
   StyleSheet,
@@ -18,6 +18,7 @@ import StarsRating from '@ComponentsStarsRating'
 import LikeButton from '@ComponentsLikeButton'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
+import { GlobalContext } from '@Context/GlobalState'
 
 interface DetailScreenProps {
   route?: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
@@ -28,16 +29,12 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   const { index: productIndex } = route?.params || { index: 0 }
   const product = allProducts[productIndex]
 
-  const [liked, setLiked] = useState(false)
   const [selectedColor, setSelectedColor] = useState(product.colors[0].color)
+  const { isOnFavorite, toggleFavorite, addToCart } = useContext(GlobalContext)
 
   useEffect(() => {
     setSelectedColor(product.colors[0].color)
   }, [productIndex])
-
-  function addToCart() {
-    console.log(`added ${product.id} to cart`)
-  }
 
   function buyNow() {
     console.log(`buy ${product.id} now`)
@@ -137,8 +134,8 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
 
         <LikeButton
           {...{
-            liked,
-            setLiked,
+            liked: isOnFavorite(product.id),
+            toggleLiked: () => toggleFavorite(product),
             size: 26,
             iconSize: 14,
             position: { top: 40, right: 35 }
@@ -157,7 +154,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={[styles.actionBtn, { backgroundColor: colors.greyColor }]}
-            onPress={addToCart}
+            onPress={() => addToCart(product)}
           >
             <Text style={styles.cartText}>Add to cart</Text>
           </TouchableOpacity>

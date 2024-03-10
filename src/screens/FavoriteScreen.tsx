@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   StyleSheet,
   TouchableOpacity,
@@ -5,28 +6,20 @@ import {
   View,
   ScrollView
 } from 'react-native'
+import { GlobalContext } from '@Context/GlobalState'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import allProducts from '@Data/data'
 import { colors } from '@Theme/colors'
 import AppLayout from '@ComponentsAppLayout'
 import FavoriteCard from '@ComponentsFavoriteCard'
-import { Product } from '@src/data/types'
 
 export default function FavoriteScreen() {
-  const favorites: Product[] = allProducts.filter((product) => product.favorite)
-
-  function deleteAllFavorites() {
-    console.log('delete all favorites')
-  }
-
-  function deleteFavorite(index: number) {
-    console.log('delete favorite', index)
-  }
+  const { favorites, deleteAllFromFavorites, toggleFavorite, isOnFavorite } =
+    useContext(GlobalContext)
 
   return (
     <AppLayout fullHeight>
       <TouchableOpacity
-        onPress={deleteAllFavorites}
+        onPress={deleteAllFromFavorites}
         style={styles.deleteAllBtn}
       >
         <Text style={styles.deleteAllLabel}>Delete All Favorites</Text>
@@ -42,8 +35,8 @@ export default function FavoriteScreen() {
               {...product}
               {...{
                 key: product.id,
-                liked: product.favorite,
-                setLiked: () => deleteFavorite(product.index),
+                liked: isOnFavorite(product.id),
+                setLiked: () => toggleFavorite(product),
                 imgUrl: product.image_link,
                 productColors: product.colors,
                 averageRating: product.average_rating

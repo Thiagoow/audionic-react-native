@@ -1,12 +1,15 @@
 import { useMemo } from 'react'
-import { TouchableOpacityProps } from 'react-native'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TouchableOpacityProps
+} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '@Theme/colors'
 
 type LikeButtonProps = {
   liked: boolean
-  setLiked: (value: boolean) => void
+  toggleLiked: () => void
   size?: number
   iconSize?: number
   position?: {
@@ -19,7 +22,7 @@ type LikeButtonProps = {
 
 const LikeButton = ({
   liked,
-  setLiked,
+  toggleLiked,
   size,
   iconSize,
   position,
@@ -42,7 +45,7 @@ const LikeButton = ({
             left: position?.left
           }
         ]}
-        onPress={() => setLiked(!liked)}
+        onPress={toggleLiked}
         {...rest}
       >
         <Icon
@@ -53,7 +56,7 @@ const LikeButton = ({
         />
       </TouchableOpacity>
     ),
-    [liked, setLiked, size, iconSize, Object.keys(rest)]
+    [liked, toggleLiked, size, iconSize, Object.keys(rest)]
   )
 }
 
