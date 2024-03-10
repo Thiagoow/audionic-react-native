@@ -1,9 +1,10 @@
 import { createContext, useReducer, ReactNode, Dispatch } from 'react'
 import { AppReducer, ActionTypes } from '@Context/AppReducer'
 import { Product, AppState, GlobalStateContextProps } from '@Data/types'
+import allProducts from '@Data/data'
 
 const initialState: AppState = {
-  products: [],
+  products: allProducts,
   favorites: [],
   cart: []
 }

@@ -11,7 +11,6 @@ import {
 import Icon from 'react-native-vector-icons/Entypo'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { colors } from '@Theme/colors'
-import allProducts from '@Data/data'
 import { Product, ProductColor } from '@Data/types'
 import AppLayout from '@ComponentsAppLayout'
 import StarsRating from '@ComponentsStarsRating'
@@ -21,28 +20,28 @@ import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 import { GlobalContext } from '@Context/GlobalState'
 
 interface DetailScreenProps {
-  route?: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
+  route: RouteProp<{ params: Pick<Product, 'index'> }, 'params'>
   navigation?: NativeStackNavigationProp<any>
 }
 
 export default function DetailScreen({ route, navigation }: DetailScreenProps) {
-  const { index: productIndex } = route?.params || { index: 0 }
-  const product = allProducts[productIndex]
-
+  const { index } = route?.params
+  const { isOnFavorite, toggleFavorite, addToCart, products } =
+    useContext(GlobalContext)
+  const product = products[index]
   const [selectedColor, setSelectedColor] = useState(product.colors[0].color)
-  const { isOnFavorite, toggleFavorite, addToCart } = useContext(GlobalContext)
 
   useEffect(() => {
     setSelectedColor(product.colors[0].color)
-  }, [productIndex])
+  }, [index])
 
   function buyNow() {
     console.log(`buy ${product.id} now`)
   }
 
   function updateProductIndex(isNext: boolean) {
-    const newIndex = isNext ? productIndex + 1 : productIndex - 1
-    if (newIndex >= 0 && newIndex < allProducts.length) {
+    const newIndex = isNext ? index + 1 : index - 1
+    if (newIndex >= 0 && newIndex < products.length) {
       navigation?.setParams({ index: newIndex })
     }
   }
@@ -65,7 +64,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
           fill={colors[product.colors[0].blobBg]}
           style={[
             styles.productBlob,
-            { transform: [{ scaleX: productIndex % 2 === 0 ? 1 : -1 }] }
+            { transform: [{ scaleX: index % 2 === 0 ? 1 : -1 }] }
           ]}
         />
         <Image
@@ -90,7 +89,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
         ) : null}
 
         {(product.brand === 'Beats' && product.index < 3) ||
-        (product.brand === 'JBL' && product.index < allProducts.length - 1) ? (
+        (product.brand === 'JBL' && product.index < products.length - 1) ? (
           <TouchableOpacity
             onPress={() => updateProductIndex(true)}
             hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}

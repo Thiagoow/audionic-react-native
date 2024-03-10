@@ -10,7 +10,6 @@ import CartButton from '@ComponentsCartButton'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 import { GlobalContext } from '@Context/GlobalState'
-import allProducts from '@Data/data'
 
 const ProductCard = ({
   id,
@@ -23,8 +22,9 @@ const ProductCard = ({
   productColors
 }: ProductCardProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-  const { isOnFavorite, toggleFavorite, addToCart } = useContext(GlobalContext)
-  const product = allProducts[index]
+  const { isOnFavorite, toggleFavorite, addToCart, products } =
+    useContext(GlobalContext)
+  const product = products[index]
   const liked = isOnFavorite(id)
 
   function goToDetails() {

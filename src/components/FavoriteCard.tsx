@@ -15,7 +15,6 @@ import LikeButton from '@ComponentsLikeButton'
 import CartButton from '@ComponentsCartButton'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
 import { GlobalContext } from '@Context/GlobalState'
-import allProducts from '@Data/data'
 
 type FavoriteCardProps = ProductCardProps & {
   liked: boolean
@@ -35,8 +34,8 @@ const FavoriteCard = ({
   ...rest
 }: FavoriteCardProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>()
-  const { toggleFavorite, addToCart } = useContext(GlobalContext)
-  const product = allProducts[index]
+  const { toggleFavorite, addToCart, products } = useContext(GlobalContext)
+  const product = products[index]
 
   function goToDetails() {
     navigation.push('Details', { index })
