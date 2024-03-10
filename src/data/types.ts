@@ -1,5 +1,26 @@
 import { ImageProps } from 'react-native'
 
+export interface GlobalStateContextProps extends AppState {
+  products: Product[]
+  favorites: Product[]
+  cart: Product[]
+  removeProduct: (id: string) => void
+  addProduct: (product: Product) => void
+  isOnFavorite: (id: string) => boolean
+  editProduct: (product: Product) => void
+  toggleFavorite: (product: Product) => void
+  deleteAllFromFavorites: () => void
+  addToCart: (product: Product) => void
+  removeFromCart: (id: string) => void
+  deleteAllFromCart: () => void
+}
+export interface AppState {
+  products: Product[]
+  favorites: Product[]
+  cart: Product[]
+  singleProduct?: Product | null
+}
+
 export interface ProductCardProps
   extends Omit<Product, 'image_link' | 'colors' | 'average_rating'> {
   imgUrl: ImageProps['source']

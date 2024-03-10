@@ -9,6 +9,7 @@
       "@src/*": ["./src/*"],
       "@Assets/*": ["src/assets/*"],
       "@Components*": ["src/components/*"],
+      "@Context/*": ["src/context/*"],
       "@Data/*": ["src/data/*"],
       "@Navigators/*": ["src/navigators/*"],
       "@Screens/*": ["src/screens/*"],

@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import DrawerNavigator from '@Navigators/DrawerNavigator'
+import { GlobalProvider } from '@Context/GlobalState'
 import {
   useFonts,
   Poppins_400Regular,
@@ -22,7 +23,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <DrawerNavigator />
+      <GlobalProvider>
+        <DrawerNavigator />
+      </GlobalProvider>
     </NavigationContainer>
   )
 }
