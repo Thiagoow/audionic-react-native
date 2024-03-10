@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   StyleSheet,
   TouchableOpacity,
@@ -6,17 +7,13 @@ import {
   ScrollView
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { Product } from '@Data/types'
 import { colors } from '@Theme/colors'
 import AppLayout from '@ComponentsAppLayout'
 import ShoppingCard from '@ComponentsShoppingCard'
+import { GlobalContext } from '@Context/GlobalState'
 
 export default function CartScreen() {
-  const cart: Product[] = []
-
-  function deleteAllOnCart() {
-    console.log('delete all from cart')
-  }
+  const { cart, deleteAllFromCart } = useContext(GlobalContext)
 
   function increaseQty() {
     console.log('increase qty')
@@ -28,7 +25,7 @@ export default function CartScreen() {
 
   return (
     <AppLayout fullHeight>
-      <TouchableOpacity onPress={deleteAllOnCart} style={styles.deleteAllBtn}>
+      <TouchableOpacity onPress={deleteAllFromCart} style={styles.deleteAllBtn}>
         <Text style={styles.deleteAllLabel}>Delete All from Cart</Text>
       </TouchableOpacity>
 

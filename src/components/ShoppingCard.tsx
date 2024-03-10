@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useContext } from 'react'
 import {
   StyleSheet,
   Text,
@@ -12,6 +12,7 @@ import { ProductCardProps } from '@Data/types'
 import { colors } from '@Theme/colors'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
+import { GlobalContext } from '@Context/GlobalState'
 
 type ShoppingCardProps = ProductCardProps & {
   increaseQty: () => void
@@ -19,6 +20,7 @@ type ShoppingCardProps = ProductCardProps & {
 } & ViewProps
 
 const ShoppingCard = ({
+  id,
   index,
   imgUrl,
   name,
@@ -29,9 +31,7 @@ const ShoppingCard = ({
   decreaseQty,
   ...rest
 }: ShoppingCardProps) => {
-  function deleteFromCart() {
-    console.log('delete from cart', index)
-  }
+  const { removeFromCart } = useContext(GlobalContext)
 
   return useMemo(
     () => (
@@ -95,12 +95,13 @@ const ShoppingCard = ({
           </View>
         </View>
 
-        <TouchableOpacity onPress={deleteFromCart}>
+        <TouchableOpacity onPress={() => removeFromCart(id)}>
           <Text style={styles.deleteFromCarBtn}>Remove from Cart</Text>
         </TouchableOpacity>
       </View>
     ),
     [
+      id,
       imgUrl,
       name,
       brand,

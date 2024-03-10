@@ -6,11 +6,11 @@ import {
   View,
   ScrollView
 } from 'react-native'
-import { GlobalContext } from '@Context/GlobalState'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import { colors } from '@Theme/colors'
 import AppLayout from '@ComponentsAppLayout'
 import FavoriteCard from '@ComponentsFavoriteCard'
+import { GlobalContext } from '@Context/GlobalState'
 
 export default function FavoriteScreen() {
   const { favorites, deleteAllFromFavorites, toggleFavorite, isOnFavorite } =
