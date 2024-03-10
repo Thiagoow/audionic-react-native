@@ -4,10 +4,7 @@ export interface GlobalStateContextProps extends AppState {
   products: Product[]
   favorites: Product[]
   cart: Product[]
-  removeProduct: (id: string) => void
-  addProduct: (product: Product) => void
   isOnFavorite: (id: string) => boolean
-  editProduct: (product: Product) => void
   toggleFavorite: (product: Product) => void
   deleteAllFromFavorites: () => void
   addToCart: (product: Product) => void
@@ -18,7 +15,6 @@ export interface AppState {
   products: Product[]
   favorites: Product[]
   cart: Product[]
-  singleProduct?: Product | null
 }
 
 export interface ProductCardProps

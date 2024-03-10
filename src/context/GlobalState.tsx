@@ -12,9 +12,6 @@ export const GlobalContext = createContext<GlobalStateContextProps>({
   products: [],
   favorites: [],
   cart: [],
-  removeProduct: () => {},
-  addProduct: () => {},
-  editProduct: () => {},
   isOnFavorite: () => false,
   toggleFavorite: () => {},
   deleteAllFromFavorites: () => {},
@@ -29,25 +26,6 @@ interface GlobalStateProps {
 
 export const GlobalProvider = ({ children }: GlobalStateProps) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
-
-  const removeProduct = (id: string) => {
-    dispatch({
-      type: ActionTypes.REMOVE_PRODUCT,
-      payload: id
-    })
-  }
-  const addProduct = (product: Product) => {
-    dispatch({
-      type: ActionTypes.ADD_PRODUCT,
-      payload: product
-    })
-  }
-  const editProduct = (product: Product) => {
-    dispatch({
-      type: ActionTypes.EDIT_PRODUCT,
-      payload: product
-    })
-  }
 
   const isOnFavorite = (id: string) => {
     return state.favorites.some((product) => product.id === id)
@@ -88,9 +66,6 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
         products: state.products,
         favorites: state.favorites,
         cart: state.cart,
-        removeProduct,
-        addProduct,
-        editProduct,
         isOnFavorite,
         toggleFavorite,
         deleteAllFromFavorites,
