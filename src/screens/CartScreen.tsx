@@ -44,46 +44,26 @@ export default function CartScreen() {
       </TouchableOpacity>
 
       {cart.length ? (
-        <>
-          <ScrollView
-            contentContainerStyle={styles.itemsScroll}
-            showsVerticalScrollIndicator={false}
-          >
-            {cart.map((product) => (
-              <ShoppingCard
-                {...product}
-                {...{
-                  key: product.id + product.colors[0].color,
-                  imgUrl: product.image_link,
-                  productColors: product.colors,
-                  averageRating: product.average_rating,
-                  increaseQty: () =>
-                    increaseQty(product.id, product.colors[0].color),
-                  decreaseQty: () =>
-                    decreaseQty(product.id, product.colors[0].color)
-                }}
-              />
-            ))}
-          </ScrollView>
-
-          <TouchableOpacity
-            onPress={buyNow}
-            disabled={!cart.length}
-            activeOpacity={0.6}
-            style={[
-              styles.buyNowBtn,
-              {
-                backgroundColor: cart.length
-                  ? colors.primaryColor
-                  : colors.blackCardBg
-              }
-            ]}
-          >
-            <Text style={styles.buyNowLabel}>
-              BUY NOW: {formatPrice(getTotalCartPrice())}
-            </Text>
-          </TouchableOpacity>
-        </>
+        <ScrollView
+          contentContainerStyle={styles.itemsScroll}
+          showsVerticalScrollIndicator={false}
+        >
+          {cart.map((product) => (
+            <ShoppingCard
+              {...product}
+              {...{
+                key: product.id + product.colors[0].color,
+                imgUrl: product.image_link,
+                productColors: product.colors,
+                averageRating: product.average_rating,
+                increaseQty: () =>
+                  increaseQty(product.id, product.colors[0].color),
+                decreaseQty: () =>
+                  decreaseQty(product.id, product.colors[0].color)
+              }}
+            />
+          ))}
+        </ScrollView>
       ) : (
         <View style={styles.emptyCart}>
           <Icon
@@ -98,6 +78,24 @@ export default function CartScreen() {
           </Text>
         </View>
       )}
+
+      <TouchableOpacity
+        onPress={buyNow}
+        disabled={!cart.length}
+        activeOpacity={0.6}
+        style={[
+          styles.buyNowBtn,
+          {
+            backgroundColor: cart.length
+              ? colors.primaryColor
+              : colors.blackCardBg
+          }
+        ]}
+      >
+        <Text style={styles.buyNowLabel}>
+          BUY NOW: {formatPrice(getTotalCartPrice())}
+        </Text>
+      </TouchableOpacity>
     </AppLayout>
   )
 }
@@ -114,12 +112,11 @@ const styles = StyleSheet.create({
   },
   buyNowBtn: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 23,
     width: '85%',
     alignSelf: 'center',
     borderRadius: 20,
-    paddingVertical: 12,
-    marginBottom: 10
+    paddingVertical: 12
   },
   deleteAllLabel: {
     color: colors.whiteColor,
@@ -149,7 +146,7 @@ const styles = StyleSheet.create({
   itemsScroll: {
     rowGap: 20,
     width: '100%',
-    paddingBottom: 80,
+    paddingBottom: 100,
     paddingHorizontal: 35,
     alignSelf: 'center'
   }
