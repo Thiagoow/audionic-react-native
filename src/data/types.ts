@@ -8,7 +8,8 @@ export interface GlobalStateContextProps extends AppState {
   toggleFavorite: (product: Product) => void
   deleteAllFromFavorites: () => void
   addToCart: (product: Product) => void
-  removeFromCart: (id: string) => void
+  increaseQty: (id: string, color: string) => void
+  decreaseQty: (id: string, color: string) => void
   deleteAllFromCart: () => void
 }
 export interface AppState {
@@ -39,6 +40,7 @@ export interface Product {
 
 export interface ProductColor {
   color: string
+  quantity: number
   price: number
   available: boolean
   blobBg:

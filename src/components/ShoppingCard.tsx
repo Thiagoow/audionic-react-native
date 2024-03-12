@@ -1,4 +1,4 @@
-import { useMemo, useContext } from 'react'
+import { useMemo } from 'react'
 import {
   StyleSheet,
   Text,
@@ -7,17 +7,17 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/FontAwesome6'
-import { ProductCardProps } from '@Data/types'
+import { ProductCardProps, GlobalStateContextProps } from '@Data/types'
 import { colors } from '@Theme/colors'
 import formatUSD from '@Utils/formatPrice'
 import BlobBackground from '@Assets/brand/backgroundBlob.svg'
-import { GlobalContext } from '@Context/GlobalState'
 
-type ShoppingCardProps = ProductCardProps & {
-  increaseQty: () => void
-  decreaseQty: () => void
-} & ViewProps
+type ShoppingCardProps = ProductCardProps &
+  Pick<GlobalStateContextProps, 'decreaseQty' | 'increaseQty'> &
+  ViewProps
 
 const ShoppingCard = ({
   id,
@@ -31,73 +31,81 @@ const ShoppingCard = ({
   decreaseQty,
   ...rest
 }: ShoppingCardProps) => {
-  const { removeFromCart } = useContext(GlobalContext)
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
+  function goToDetails() {
+    navigation.push('Details', { index })
+  }
 
   return useMemo(
     () => (
-      <View>
-        <View style={styles.container} {...rest}>
-          <View style={styles.productVisual}>
-            <BlobBackground
-              fill={colors[productColors[0].blobBg]}
-              style={styles.productBlob}
-            />
+      <View style={styles.container} {...rest}>
+        <TouchableOpacity
+          hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          onPress={goToDetails}
+          style={styles.productVisual}
+        >
+          <BlobBackground
+            fill={colors[productColors[0].blobBg]}
+            style={styles.productBlob}
+          />
 
-            <Image
-              source={imgUrl}
-              style={[
-                styles.productImg,
-                { maxWidth: brand === 'Beats' ? 39 : 49 }
-              ]}
-            />
-          </View>
+          <Image
+            source={imgUrl}
+            style={[
+              styles.productImg,
+              { maxWidth: brand === 'Beats' ? 39 : 49 }
+            ]}
+          />
+        </TouchableOpacity>
 
-          <View style={styles.productInfo}>
-            <View style={styles.productNamePrice}>
-              <Text
-                style={styles.productName}
-                numberOfLines={1}
-                ellipsizeMode="clip"
-              >
-                {name}
-              </Text>
+        <View style={styles.productInfo}>
+          <View style={styles.productNamePrice}>
+            <Text
+              style={styles.productName}
+              numberOfLines={1}
+              ellipsizeMode="clip"
+            >
+              {name}
+            </Text>
 
-              <Text
-                style={styles.productPrice}
-                numberOfLines={1}
-                ellipsizeMode="clip"
-              >
-                {formatUSD(productColors[0].price)}
-              </Text>
-            </View>
-
-            <Text style={styles.productDescription} numberOfLines={1}>
-              {description}
+            <Text
+              style={styles.productPrice}
+              numberOfLines={1}
+              ellipsizeMode="clip"
+            >
+              {formatUSD(productColors[0].price)}
             </Text>
           </View>
 
-          <View style={styles.actionBtns}>
-            <TouchableOpacity
-              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              onPress={increaseQty}
-              style={styles.actionBtn}
-            >
-              <Icon name="plus" size={13} color={colors.txtDarkColor} />
-            </TouchableOpacity>
+          <View style={styles.productDescription}>
+            <Text style={styles.productColorQty}>
+              Color: {productColors[0].color}
+            </Text>
 
-            <TouchableOpacity
-              hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              onPress={decreaseQty}
-              style={styles.actionBtn}
-            >
-              <Icon name="minus" size={13} color={colors.txtDarkColor} />
-            </TouchableOpacity>
+            <Text style={styles.productColorQty}>
+              Quantity: {productColors[0].quantity}
+            </Text>
           </View>
         </View>
 
-        <TouchableOpacity onPress={() => removeFromCart(id)}>
-          <Text style={styles.deleteFromCarBtn}>Remove from Cart</Text>
-        </TouchableOpacity>
+        <View style={styles.actionBtns}>
+          <TouchableOpacity
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            onPress={() => increaseQty(id, productColors[0].color)}
+            style={styles.actionBtn}
+          >
+            <Icon name="plus" size={13} color={colors.txtDarkColor} />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            onPress={() => decreaseQty(id, productColors[0].color)}
+            style={styles.actionBtn}
+          >
+            <Icon name="minus" size={13} color={colors.txtDarkColor} />
+          </TouchableOpacity>
+        </View>
       </View>
     ),
     [
@@ -164,6 +172,10 @@ const styles = StyleSheet.create({
     color: colors.primaryColor
   },
   productDescription: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  productColorQty: {
     fontSize: 10,
     fontWeight: '400',
     fontFamily: 'Poppins_400Regular',
@@ -182,15 +194,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.containerColor,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  deleteFromCarBtn: {
-    fontSize: 10,
-    marginTop: 8,
-    marginRight: 8,
-    textAlign: 'right',
-    fontWeight: '600',
-    fontFamily: 'Poppins_600SemiBold',
-    color: colors.txtDarkColor
   }
 })
 

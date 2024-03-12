@@ -13,15 +13,8 @@ import ShoppingCard from '@ComponentsShoppingCard'
 import { GlobalContext } from '@Context/GlobalState'
 
 export default function CartScreen() {
-  const { cart, deleteAllFromCart } = useContext(GlobalContext)
-
-  function increaseQty() {
-    console.log('increase qty')
-  }
-
-  function decreaseQty() {
-    console.log('decrease qty')
-  }
+  const { cart, deleteAllFromCart, increaseQty, decreaseQty } =
+    useContext(GlobalContext)
 
   return (
     <AppLayout fullHeight>
@@ -38,12 +31,14 @@ export default function CartScreen() {
             <ShoppingCard
               {...product}
               {...{
-                key: product.id,
+                key: product.id + product.colors[0].color,
                 imgUrl: product.image_link,
                 productColors: product.colors,
                 averageRating: product.average_rating,
-                increaseQty,
-                decreaseQty
+                increaseQty: () =>
+                  increaseQty(product.id, product.colors[0].color),
+                decreaseQty: () =>
+                  decreaseQty(product.id, product.colors[0].color)
               }}
             />
           ))}
@@ -97,8 +92,8 @@ const styles = StyleSheet.create({
     color: colors.blackCardBg
   },
   itemsScroll: {
+    rowGap: 20,
     width: '100%',
-    rowGap: 22,
     paddingBottom: 20,
     paddingHorizontal: 35,
     alignSelf: 'center'

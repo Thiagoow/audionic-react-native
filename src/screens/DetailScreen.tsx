@@ -29,10 +29,10 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   const { isOnFavorite, toggleFavorite, addToCart, products } =
     useContext(GlobalContext)
   const product = products[index]
-  const [selectedColor, setSelectedColor] = useState(product.colors[0].color)
+  const [selectedColor, setSelectedColor] = useState(product.colors[0])
 
   useEffect(() => {
-    setSelectedColor(product.colors[0].color)
+    setSelectedColor(product.colors[0])
   }, [index])
 
   function buyNow() {
@@ -48,7 +48,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
 
   function getColorButtonStyle(item: ProductColor) {
     const isUniqueColor = item.color === 'unique'
-    const isSelectedColor = selectedColor === item.color
+    const isSelectedColor = selectedColor.color === item.color
 
     return {
       backgroundColor: isUniqueColor ? colors.blackColor : item.color,
@@ -125,7 +125,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
                 hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
                 disabled={!item.available}
                 style={[styles.colorButton, getColorButtonStyle(item)]}
-                onPress={() => setSelectedColor(item.color)}
+                onPress={() => setSelectedColor(item)}
               />
             ))}
           </View>
@@ -153,7 +153,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={[styles.actionBtn, { backgroundColor: colors.greyColor }]}
-            onPress={() => addToCart(product)}
+            onPress={() => addToCart({ ...product, colors: [selectedColor] })}
           >
             <Text style={styles.cartText}>Add to cart</Text>
           </TouchableOpacity>

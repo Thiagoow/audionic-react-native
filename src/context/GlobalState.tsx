@@ -17,7 +17,8 @@ export const GlobalContext = createContext<GlobalStateContextProps>({
   toggleFavorite: () => {},
   deleteAllFromFavorites: () => {},
   addToCart: () => {},
-  removeFromCart: () => {},
+  increaseQty: () => {},
+  decreaseQty: () => {},
   deleteAllFromCart: () => {}
 })
 
@@ -49,10 +50,16 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
       payload: product
     })
   }
-  const removeFromCart = (id: string) => {
+  const increaseQty = (id: string, color: string) => {
     dispatch({
-      type: ActionTypes.REMOVE_FROM_CART,
-      payload: id
+      type: ActionTypes.INCREASE_QTY,
+      payload: { id, color }
+    })
+  }
+  const decreaseQty = (id: string, color: string) => {
+    dispatch({
+      type: ActionTypes.DECREASE_QTY,
+      payload: { id, color }
     })
   }
   const deleteAllFromCart = () => {
@@ -71,7 +78,8 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
         toggleFavorite,
         deleteAllFromFavorites,
         addToCart,
-        removeFromCart,
+        increaseQty,
+        decreaseQty,
         deleteAllFromCart
       }}
     >
