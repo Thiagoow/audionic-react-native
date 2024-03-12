@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   itemsScroll: {
     rowGap: 20,
     width: '100%',
-    paddingBottom: 100,
+    paddingBottom: 92,
     paddingHorizontal: 35,
     alignSelf: 'center'
   }
