@@ -37,7 +37,6 @@ const ProductsGrid = ({ data, title, ...rest }: ProductsGridProps) => {
 const styles = StyleSheet.create({
   label: {
     fontSize: 14,
-    fontWeight: '600',
     fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },

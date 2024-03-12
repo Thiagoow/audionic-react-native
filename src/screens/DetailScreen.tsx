@@ -198,13 +198,11 @@ const styles = StyleSheet.create({
   productName: {
     fontSize: 14,
     marginTop: 10,
-    fontWeight: '600',
     fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },
   productPrice: {
     fontSize: 13,
-    fontWeight: '600',
     fontFamily: 'Poppins_600SemiBold',
     color: colors.primaryColor
   },
@@ -235,7 +233,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 13,
-    fontWeight: '600',
     fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },
@@ -275,7 +272,7 @@ const styles = StyleSheet.create({
   },
   buyText: {
     fontSize: 14,
-    fontWeight: '600',
+
     fontFamily: 'Poppins_600SemiBold',
     textTransform: 'uppercase',
     color: colors.whiteColor

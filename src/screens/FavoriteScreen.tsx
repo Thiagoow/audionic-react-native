@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
   emptyMessage: {
     fontSize: 14,
     maxWidth: 200,
-    fontWeight: '600',
     textAlign: 'center',
     fontFamily: 'Poppins_600SemiBold',
     color: colors.blackCardBg

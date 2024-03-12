@@ -140,14 +140,12 @@ const styles = StyleSheet.create({
   productName: {
     fontSize: 12,
     maxWidth: 200,
-    fontWeight: '600',
     fontFamily: 'Poppins_600SemiBold',
     color: colors.blackColor
   },
   productDescription: {
     fontSize: 10,
     maxWidth: 200,
-    fontWeight: '400',
     fontFamily: 'Poppins_400Regular',
     color: colors.blackColor
   },
