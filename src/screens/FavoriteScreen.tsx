@@ -19,8 +19,16 @@ export default function FavoriteScreen() {
   return (
     <AppLayout fullHeight>
       <TouchableOpacity
+        disabled={!favorites.length}
         onPress={deleteAllFromFavorites}
-        style={styles.deleteAllBtn}
+        style={[
+          styles.deleteAllBtn,
+          {
+            backgroundColor: favorites.length
+              ? colors.txtDarkColor
+              : colors.blackCardBg
+          }
+        ]}
       >
         <Text style={styles.deleteAllLabel}>Delete All Favorites</Text>
       </TouchableOpacity>
@@ -70,7 +78,6 @@ const styles = StyleSheet.create({
     marginTop: 23,
     alignSelf: 'center',
     borderRadius: 20,
-    backgroundColor: colors.txtDarkColor,
     paddingVertical: 12,
     marginBottom: 20
   },

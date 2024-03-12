@@ -18,7 +18,18 @@ export default function CartScreen() {
 
   return (
     <AppLayout fullHeight>
-      <TouchableOpacity onPress={deleteAllFromCart} style={styles.deleteAllBtn}>
+      <TouchableOpacity
+        disabled={!cart.length}
+        onPress={deleteAllFromCart}
+        style={[
+          styles.deleteAllBtn,
+          {
+            backgroundColor: cart.length
+              ? colors.txtDarkColor
+              : colors.blackCardBg
+          }
+        ]}
+      >
         <Text style={styles.deleteAllLabel}>Delete All from Cart</Text>
       </TouchableOpacity>
 
