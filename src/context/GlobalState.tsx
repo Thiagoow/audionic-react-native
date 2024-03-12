@@ -19,6 +19,7 @@ export const GlobalContext = createContext<GlobalStateContextProps>({
   addToCart: () => {},
   increaseQty: () => {},
   decreaseQty: () => {},
+  getTotalCartPrice: () => 0,
   deleteAllFromCart: () => {}
 })
 
@@ -31,6 +32,11 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
 
   const isOnFavorite = (id: string) => {
     return state.favorites.some((product) => product.id === id)
+  }
+  const getTotalCartPrice = () => {
+    return state.cart.reduce((acc, product) => {
+      return acc + product.colors[0].price * product.colors[0].quantity
+    }, 0)
   }
   const toggleFavorite = (product: Product) => {
     dispatch({
@@ -80,6 +86,7 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
         addToCart,
         increaseQty,
         decreaseQty,
+        getTotalCartPrice,
         deleteAllFromCart
       }}
     >

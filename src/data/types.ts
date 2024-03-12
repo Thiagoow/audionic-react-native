@@ -10,6 +10,7 @@ export interface GlobalStateContextProps extends AppState {
   addToCart: (product: Product) => void
   increaseQty: (id: string, color: string) => void
   decreaseQty: (id: string, color: string) => void
+  getTotalCartPrice: () => number
   deleteAllFromCart: () => void
 }
 export interface AppState {

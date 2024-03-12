@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   },
   deleteAllLabel: {
     color: colors.whiteColor,
+    fontFamily: 'Poppins_400Regular',
     textAlign: 'center'
   },
   emptyFavorites: {

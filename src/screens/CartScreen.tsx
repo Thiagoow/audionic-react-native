@@ -11,10 +11,20 @@ import { colors } from '@Theme/colors'
 import AppLayout from '@ComponentsAppLayout'
 import ShoppingCard from '@ComponentsShoppingCard'
 import { GlobalContext } from '@Context/GlobalState'
+import formatPrice from '@Utils/formatPrice'
 
 export default function CartScreen() {
-  const { cart, deleteAllFromCart, increaseQty, decreaseQty } =
-    useContext(GlobalContext)
+  const {
+    cart,
+    deleteAllFromCart,
+    increaseQty,
+    decreaseQty,
+    getTotalCartPrice
+  } = useContext(GlobalContext)
+
+  function buyNow() {
+    console.log(`buy now`)
+  }
 
   return (
     <AppLayout fullHeight>
@@ -34,26 +44,46 @@ export default function CartScreen() {
       </TouchableOpacity>
 
       {cart.length ? (
-        <ScrollView
-          contentContainerStyle={styles.itemsScroll}
-          showsVerticalScrollIndicator={false}
-        >
-          {cart.map((product) => (
-            <ShoppingCard
-              {...product}
-              {...{
-                key: product.id + product.colors[0].color,
-                imgUrl: product.image_link,
-                productColors: product.colors,
-                averageRating: product.average_rating,
-                increaseQty: () =>
-                  increaseQty(product.id, product.colors[0].color),
-                decreaseQty: () =>
-                  decreaseQty(product.id, product.colors[0].color)
-              }}
-            />
-          ))}
-        </ScrollView>
+        <>
+          <ScrollView
+            contentContainerStyle={styles.itemsScroll}
+            showsVerticalScrollIndicator={false}
+          >
+            {cart.map((product) => (
+              <ShoppingCard
+                {...product}
+                {...{
+                  key: product.id + product.colors[0].color,
+                  imgUrl: product.image_link,
+                  productColors: product.colors,
+                  averageRating: product.average_rating,
+                  increaseQty: () =>
+                    increaseQty(product.id, product.colors[0].color),
+                  decreaseQty: () =>
+                    decreaseQty(product.id, product.colors[0].color)
+                }}
+              />
+            ))}
+          </ScrollView>
+
+          <TouchableOpacity
+            onPress={buyNow}
+            disabled={!cart.length}
+            activeOpacity={0.6}
+            style={[
+              styles.buyNowBtn,
+              {
+                backgroundColor: cart.length
+                  ? colors.primaryColor
+                  : colors.blackCardBg
+              }
+            ]}
+          >
+            <Text style={styles.buyNowLabel}>
+              BUY NOW: {formatPrice(getTotalCartPrice())}
+            </Text>
+          </TouchableOpacity>
+        </>
       ) : (
         <View style={styles.emptyCart}>
           <Icon
@@ -82,7 +112,22 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginBottom: 20
   },
+  buyNowBtn: {
+    position: 'absolute',
+    bottom: 0,
+    width: '85%',
+    alignSelf: 'center',
+    borderRadius: 20,
+    paddingVertical: 12,
+    marginBottom: 10
+  },
   deleteAllLabel: {
+    color: colors.whiteColor,
+    fontFamily: 'Poppins_400Regular',
+    textAlign: 'center'
+  },
+  buyNowLabel: {
+    fontFamily: 'Poppins_600SemiBold',
     color: colors.whiteColor,
     textAlign: 'center'
   },
@@ -105,7 +150,7 @@ const styles = StyleSheet.create({
   itemsScroll: {
     rowGap: 20,
     width: '100%',
-    paddingBottom: 20,
+    paddingBottom: 80,
     paddingHorizontal: 35,
     alignSelf: 'center'
   }
