@@ -16,15 +16,12 @@ import formatPrice from '@Utils/formatPrice'
 export default function CartScreen() {
   const {
     cart,
+    buyNow,
     deleteAllFromCart,
     increaseQty,
     decreaseQty,
     getTotalCartPrice
   } = useContext(GlobalContext)
-
-  function buyNow() {
-    console.log(`buy now`)
-  }
 
   return (
     <AppLayout fullHeight>
@@ -80,7 +77,10 @@ export default function CartScreen() {
       )}
 
       <TouchableOpacity
-        onPress={buyNow}
+        onPress={() => {
+          buyNow(cart)
+          deleteAllFromCart()
+        }}
         disabled={!cart.length}
         activeOpacity={0.6}
         style={[

@@ -4,10 +4,12 @@ export interface GlobalStateContextProps extends AppState {
   products: Product[]
   favorites: Product[]
   cart: Product[]
+  orders: Order[]
   isOnFavorite: (id: string) => boolean
   toggleFavorite: (product: Product) => void
   deleteAllFromFavorites: () => void
   addToCart: (product: Product) => void
+  buyNow: (products: Product[]) => void
   increaseQty: (id: string, color: string) => void
   decreaseQty: (id: string, color: string) => void
   getTotalCartPrice: () => number
@@ -17,6 +19,7 @@ export interface AppState {
   products: Product[]
   favorites: Product[]
   cart: Product[]
+  orders: Order[]
 }
 
 export interface ProductCardProps
@@ -24,6 +27,13 @@ export interface ProductCardProps
   imgUrl: ImageProps['source']
   productColors: Product['colors']
   averageRating: Product['average_rating']
+}
+
+export interface Order {
+  id: string
+  date: string
+  total: number
+  products: Product[]
 }
 
 export interface Product {

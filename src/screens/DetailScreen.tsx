@@ -26,7 +26,7 @@ interface DetailScreenProps {
 
 export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   const { index } = route?.params
-  const { isOnFavorite, toggleFavorite, addToCart, products } =
+  const { isOnFavorite, toggleFavorite, addToCart, buyNow, products } =
     useContext(GlobalContext)
   const product = products[index]
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
@@ -34,10 +34,6 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
   useEffect(() => {
     setSelectedColor(product.colors[0])
   }, [index])
-
-  function buyNow() {
-    console.log(`buy ${product.id} now`)
-  }
 
   function updateProductIndex(isNext: boolean) {
     const newIndex = isNext ? index + 1 : index - 1
@@ -161,7 +157,7 @@ export default function DetailScreen({ route, navigation }: DetailScreenProps) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={[styles.actionBtn, { backgroundColor: colors.primaryColor }]}
-            onPress={buyNow}
+            onPress={() => buyNow([product])}
           >
             <Text style={styles.buyText}>Buy now</Text>
           </TouchableOpacity>

@@ -1,22 +1,25 @@
 import { createContext, useReducer, ReactNode, Dispatch } from 'react'
 import { AppReducer, ActionTypes } from '@Context/AppReducer'
-import { Product, AppState, GlobalStateContextProps } from '@Data/types'
+import { Product, Order, AppState, GlobalStateContextProps } from '@Data/types'
 import allProducts from '@Data/data'
 
 const initialState: AppState = {
   products: allProducts,
   favorites: [],
-  cart: []
+  cart: [],
+  orders: []
 }
 
 export const GlobalContext = createContext<GlobalStateContextProps>({
   products: [],
   favorites: [],
   cart: [],
+  orders: [],
   isOnFavorite: () => false,
   toggleFavorite: () => {},
   deleteAllFromFavorites: () => {},
   addToCart: () => {},
+  buyNow: () => {},
   increaseQty: () => {},
   decreaseQty: () => {},
   getTotalCartPrice: () => 0,
@@ -37,6 +40,22 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
     return state.cart.reduce((acc, product) => {
       return acc + product.colors[0].price * product.colors[0].quantity
     }, 0)
+  }
+  const buyNow = (products: Product[]) => {
+    const order: Order = {
+      id: Math.random().toString(36),
+      date: new Date().toLocaleString(),
+      total:
+        products.length === 1
+          ? products[0].colors[0].price
+          : getTotalCartPrice(),
+      products
+    }
+
+    dispatch({
+      type: ActionTypes.BUY_NOW,
+      payload: order
+    })
   }
   const toggleFavorite = (product: Product) => {
     dispatch({
@@ -80,10 +99,12 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
         products: state.products,
         favorites: state.favorites,
         cart: state.cart,
+        orders: state.orders,
         isOnFavorite,
         toggleFavorite,
         deleteAllFromFavorites,
         addToCart,
+        buyNow,
         increaseQty,
         decreaseQty,
         getTotalCartPrice,

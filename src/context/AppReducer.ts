@@ -1,14 +1,16 @@
-import { Product, AppState } from '@Data/types'
+import { Product, Order, AppState } from '@Data/types'
 
 const initialState: AppState = {
   products: [],
   favorites: [],
-  cart: []
+  cart: [],
+  orders: []
 }
 
 export enum ActionTypes {
   TOGGLE_FAVORITE = 'TOGGLE_FAVORITE',
   ADD_TO_CART = 'ADD_TO_CART',
+  BUY_NOW = 'BUY_NOW',
   INCREASE_QTY = 'INCREASE_QTY',
   DECREASE_QTY = 'DECREASE_QTY',
   DELETE_ALL_FROM_CART = 'DELETE_ALL_FROM_CART',
@@ -18,6 +20,7 @@ export enum ActionTypes {
 type Action =
   | { type: ActionTypes.TOGGLE_FAVORITE; payload: Product }
   | { type: ActionTypes.ADD_TO_CART; payload: Product }
+  | { type: ActionTypes.BUY_NOW; payload: Order }
   | { type: ActionTypes.INCREASE_QTY; payload: { id: string; color: string } }
   | { type: ActionTypes.DECREASE_QTY; payload: { id: string; color: string } }
   | { type: ActionTypes.DELETE_ALL_FROM_CART }
@@ -82,6 +85,11 @@ export const AppReducer = (
           ...state,
           cart: [...state.cart, payload]
         }
+      }
+    case ActionTypes.BUY_NOW:
+      return {
+        ...state,
+        orders: [...state.orders, action.payload]
       }
     case ActionTypes.INCREASE_QTY:
       return {
