@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import AppLayout from '@src/components/AppLayout'
 import { GlobalContext } from '@Context/GlobalState'

@@ -23,6 +23,11 @@ export default function CartScreen() {
     getTotalCartPrice
   } = useContext(GlobalContext)
 
+  function buyNowAndDeleteFromCart() {
+    buyNow(cart)
+    deleteAllFromCart()
+  }
+
   return (
     <AppLayout fullHeight>
       <TouchableOpacity
@@ -77,10 +82,7 @@ export default function CartScreen() {
       )}
 
       <TouchableOpacity
-        onPress={() => {
-          buyNow(cart)
-          deleteAllFromCart()
-        }}
+        onPress={buyNowAndDeleteFromCart}
         disabled={!cart.length}
         activeOpacity={0.6}
         style={[
