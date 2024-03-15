@@ -43,8 +43,16 @@ export const GlobalProvider = ({ children }: GlobalStateProps) => {
   }
   const buyNow = (products: Product[]) => {
     const order: Order = {
-      id: Math.random().toString(36),
-      date: new Date().toLocaleString(),
+      id: Math.random().toString(36).substring(2),
+      date: new Date().toLocaleString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      }),
       total:
         products.length === 1
           ? products[0].colors[0].price
