@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -15,11 +15,17 @@ import { GlobalContext } from '@Context/GlobalState'
 
 export default function ProfileScreen() {
   const { orders } = useContext(GlobalContext)
+  const [sortByOldest, setSortByOldest] = useState(false)
 
   function toggleSortByDate() {
-    console.log('Sort by date')
-    console.log(orders)
+    setSortByOldest(!sortByOldest)
   }
+
+  const sortedOrders = sortByOldest
+    ? [...orders].sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      )
+    : orders.slice().reverse()
 
   return (
     <AppLayout fullHeight>
@@ -35,15 +41,17 @@ export default function ProfileScreen() {
           }
         ]}
       >
-        <Text style={styles.sortLabel}>Sort by: </Text>
+        <Text style={styles.sortLabel}>
+          Sort by: {sortByOldest ? 'Oldest' : 'Latest'}
+        </Text>
       </TouchableOpacity>
 
-      {orders.length ? (
+      {sortedOrders.length ? (
         <ScrollView
           contentContainerStyle={styles.itemsScroll}
           showsVerticalScrollIndicator={false}
         >
-          {orders.map((order: Order) => (
+          {sortedOrders.map((order: Order) => (
             <OrderCard {...order} key={order.id} />
           ))}
         </ScrollView>
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
     color: colors.blackCardBg
   },
   itemsScroll: {
-    rowGap: 30,
+    rowGap: 23,
     width: '100%',
     paddingBottom: 23,
     paddingHorizontal: 35,
