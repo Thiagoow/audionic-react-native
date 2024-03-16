@@ -1,5 +1,4 @@
-import { createContext, useReducer, ReactNode, useEffect } from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { createContext, useReducer, ReactNode, Dispatch } from 'react'
 import { AppReducer, ActionTypes } from '@Context/AppReducer'
 import { Product, Order, AppState, GlobalStateContextProps } from '@Data/types'
 import allProducts from '@Data/data'
@@ -33,36 +32,6 @@ interface GlobalStateProps {
 
 export const GlobalProvider = ({ children }: GlobalStateProps) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
-
-  useEffect(() => {
-    const loadState = async () => {
-      try {
-        const storedState = await AsyncStorage.getItem('appState')
-        if (storedState !== null) {
-          dispatch({
-            type: ActionTypes.RESTORE_STATE,
-            payload: JSON.parse(storedState)
-          })
-        }
-      } catch (error) {
-        console.error('Error loading state from AsyncStorage:', error)
-      }
-    }
-
-    loadState()
-  }, [])
-
-  useEffect(() => {
-    const saveState = async () => {
-      try {
-        await AsyncStorage.setItem('appState', JSON.stringify(state))
-      } catch (error) {
-        console.error('Error saving state to AsyncStorage:', error)
-      }
-    }
-
-    saveState()
-  }, [state])
 
   const isOnFavorite = (id: string) => {
     return state.favorites.some((product) => product.id === id)
