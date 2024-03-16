@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#060DD9"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -19,11 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#060DD9"
-      }
+      },
+      "package": "com.thiag00w.Audionic"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
-    "plugins": ["expo-font"]
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c994c0ae-61f9-40f8-ae08-e81d480d68b5"
+      }
+    }
   }
 }
