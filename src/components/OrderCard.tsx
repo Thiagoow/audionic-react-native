@@ -30,21 +30,19 @@ const OrderCard = ({ id, date, products, total, ...rest }: OrderCardProps) => {
           {products.map((product) => (
             <View style={styles.product} key={product.id}>
               <View style={styles.infoTexts}>
-                <Text key={product.id} style={styles.productName}>
-                  {product.name}
-                </Text>
+                <Text style={styles.productName}>{product.name}</Text>
 
-                <Text key={product.id} style={styles.productLabel}>
+                <Text style={styles.productLabel}>
                   {formatPrice(product.colors[0].price)}
                 </Text>
               </View>
 
               <View style={styles.infoTexts}>
-                <Text key={product.id} style={styles.productLabel}>
+                <Text style={styles.productLabel}>
                   Color: {product.colors[0].color}
                 </Text>
 
-                <Text key={product.id} style={styles.productLabel}>
+                <Text style={styles.productLabel}>
                   Quantity: {product.colors[0].quantity}
                 </Text>
               </View>

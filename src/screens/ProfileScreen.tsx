@@ -7,11 +7,11 @@ import {
   TouchableOpacity
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome6'
+import { Order } from '@Data/types'
 import { colors } from '@Theme/colors'
 import AppLayout from '@Components/AppLayout'
 import OrderCard from '@Components/OrderCard'
 import { GlobalContext } from '@Context/GlobalState'
-import { Order } from '@Data/types'
 
 export default function ProfileScreen() {
   const { orders } = useContext(GlobalContext)
