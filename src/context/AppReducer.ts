@@ -14,7 +14,8 @@ export enum ActionTypes {
   INCREASE_QTY = 'INCREASE_QTY',
   DECREASE_QTY = 'DECREASE_QTY',
   DELETE_ALL_FROM_CART = 'DELETE_ALL_FROM_CART',
-  DELETE_ALL_FROM_FAVORITES = 'DELETE_ALL_FROM_FAVORITES'
+  DELETE_ALL_FROM_FAVORITES = 'DELETE_ALL_FROM_FAVORITES',
+  RESTORE_STATE = 'RESTORE_STATE'
 }
 
 type Action =
@@ -25,6 +26,7 @@ type Action =
   | { type: ActionTypes.DECREASE_QTY; payload: { id: string; color: string } }
   | { type: ActionTypes.DELETE_ALL_FROM_CART }
   | { type: ActionTypes.DELETE_ALL_FROM_FAVORITES }
+  | { type: ActionTypes.RESTORE_STATE; payload: AppState }
 
 export const AppReducer = (
   state: AppState = initialState,
