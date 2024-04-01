@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Audionic",
-    "slug": "Audionic",
+    "slug": "audionic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -32,8 +32,9 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "c994c0ae-61f9-40f8-ae08-e81d480d68b5"
+        "projectId": "c77cdcea-6420-4a8f-8506-3683ace240f1"
       }
-    }
+    },
+    "owner": "thiagoow"
   }
 }
